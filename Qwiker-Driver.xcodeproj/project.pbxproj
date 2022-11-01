@@ -39,6 +39,12 @@
 		5A9626D42911115C002ADB48 /* AppLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626D32911115C002ADB48 /* AppLocation.swift */; };
 		5A9626D629111185002ADB48 /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626D529111185002ADB48 /* Passenger.swift */; };
 		5A9626D829111293002ADB48 /* RideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626D729111293002ADB48 /* RideType.swift */; };
+		5A9626DA2911168E002ADB48 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626D92911168E002ADB48 /* OnboardingView.swift */; };
+		5A9626DD29111720002ADB48 /* PrimaryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626DC29111720002ADB48 /* PrimaryButtonView.swift */; };
+		5A9626DF29111751002ADB48 /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626DE29111751002ADB48 /* PrimaryTextField.swift */; };
+		5A9626E12911177A002ADB48 /* CustomLazyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626E02911177A002ADB48 /* CustomLazyImage.swift */; };
+		5A9626E329111795002ADB48 /* CustomCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626E229111795002ADB48 /* CustomCorners.swift */; };
+		5A9626E72911214A002ADB48 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626E62911214A002ADB48 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +75,12 @@
 		5A9626D32911115C002ADB48 /* AppLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocation.swift; sourceTree = "<group>"; };
 		5A9626D529111185002ADB48 /* Passenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
 		5A9626D729111293002ADB48 /* RideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideType.swift; sourceTree = "<group>"; };
+		5A9626D92911168E002ADB48 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		5A9626DC29111720002ADB48 /* PrimaryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonView.swift; sourceTree = "<group>"; };
+		5A9626DE29111751002ADB48 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
+		5A9626E02911177A002ADB48 /* CustomLazyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLazyImage.swift; sourceTree = "<group>"; };
+		5A9626E229111795002ADB48 /* CustomCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorners.swift; sourceTree = "<group>"; };
+		5A9626E62911214A002ADB48 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +206,7 @@
 		5A96269429110A73002ADB48 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5A9626DB29111712002ADB48 /* ViewComponents */,
 				5A9626B529110E24002ADB48 /* Authentication */,
 				5A9626B429110E1B002ADB48 /* Onboard */,
 			);
@@ -215,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				5A96269B29110AF0002ADB48 /* MapHelpers.swift */,
+				5A9626E62911214A002ADB48 /* Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -222,6 +236,7 @@
 		5A9626B429110E1B002ADB48 /* Onboard */ = {
 			isa = PBXGroup;
 			children = (
+				5A9626D92911168E002ADB48 /* OnboardingView.swift */,
 			);
 			path = Onboard;
 			sourceTree = "<group>";
@@ -248,6 +263,17 @@
 				5A9626B829110E66002ADB48 /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5A9626DB29111712002ADB48 /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				5A9626DC29111720002ADB48 /* PrimaryButtonView.swift */,
+				5A9626DE29111751002ADB48 /* PrimaryTextField.swift */,
+				5A9626E02911177A002ADB48 /* CustomLazyImage.swift */,
+				5A9626E229111795002ADB48 /* CustomCorners.swift */,
+			);
+			path = ViewComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,15 +374,21 @@
 				5A96269929110AC7002ADB48 /* ErrorHandler.swift in Sources */,
 				5A9626CE291110EF002ADB48 /* User.swift in Sources */,
 				5A9626D829111293002ADB48 /* RideType.swift in Sources */,
+				5A9626DF29111751002ADB48 /* PrimaryTextField.swift in Sources */,
 				5A9626A529110B9F002ADB48 /* String.swift in Sources */,
 				5A9626A929110BEA002ADB48 /* MapKit.swift in Sources */,
+				5A9626E72911214A002ADB48 /* Helpers.swift in Sources */,
+				5A9626E329111795002ADB48 /* CustomCorners.swift in Sources */,
 				5A9626A129110B74002ADB48 /* Color.swift in Sources */,
+				5A9626DA2911168E002ADB48 /* OnboardingView.swift in Sources */,
 				5A96269F29110B45002ADB48 /* LocationManager.swift in Sources */,
 				5A96268129110A35002ADB48 /* Qwiker_DriverApp.swift in Sources */,
 				5A9626D629111185002ADB48 /* Passenger.swift in Sources */,
+				5A9626E12911177A002ADB48 /* CustomLazyImage.swift in Sources */,
 				5A9626D42911115C002ADB48 /* AppLocation.swift in Sources */,
 				5A96269729110AAD002ADB48 /* FontExt.swift in Sources */,
 				5A96269C29110AF0002ADB48 /* MapHelpers.swift in Sources */,
+				5A9626DD29111720002ADB48 /* PrimaryButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

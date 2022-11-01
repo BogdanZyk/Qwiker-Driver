@@ -9,7 +9,7 @@ import MapKit
 
 final class MapHelpers{
     
-//
+
 //    static func ridePriceAndDestinceForType(_ type: RideType, currentLocation: AppLocation?, destinationLocation: AppLocation?) -> (price: String, tripDistanceInMeters: Double)  {
 //        guard let currentLocation = currentLocation, let destinationLocation = destinationLocation else { return ("0.0", 0.0) }
 //        let location = CLLocation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)

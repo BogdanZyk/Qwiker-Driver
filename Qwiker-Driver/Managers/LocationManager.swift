@@ -23,8 +23,7 @@ class LocationManager: NSObject, ObservableObject{
     @Published var isAuthorization: Bool = false
     @Published var userLocation: CLLocation?
     
-    @AppStorage("isShowOnboarding") var isShowOnboarding: Bool = true
-    
+
     private override init() {
         super.init()
         locationManager.delegate = self
@@ -43,14 +42,11 @@ class LocationManager: NSObject, ObservableObject{
        case .authorizedAlways, .authorizedWhenInUse:
            locationManager.startUpdatingLocation()
            isAuthorization = true
-           print("isAuthorization1", isAuthorization)
        case .denied, .restricted:
            print("denied", "restricted")
            showAlert = true
        case .notDetermined:
-           if !isShowOnboarding{
-               locationManager.requestWhenInUseAuthorization()
-           }
+            locationManager.requestWhenInUseAuthorization()
        default:
            break
        }
@@ -59,10 +55,10 @@ class LocationManager: NSObject, ObservableObject{
     //MARK: - Map helpers
     
     
-//    private func createCustomRegion(coordinates: CLLocationCoordinate2D) {
-//        let region = CLCircularRegion(center: coordinates, radius: 25, identifier: "type.rawValue")
-//        locationManager.startMonitoring(for: region)
-//    }
+    private func createCustomRegion(coordinates: CLLocationCoordinate2D) {
+        let region = CLCircularRegion(center: coordinates, radius: 25, identifier: "type.rawValue")
+        locationManager.startMonitoring(for: region)
+    }
     
     func setUserLocationInMap(){
         guard let userLocation = userLocation else {return}
@@ -93,17 +89,17 @@ extension LocationManager: CLLocationManagerDelegate{
     }
     
     
+    
     private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
 
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
             manager.startUpdatingLocation()
         case .denied, .restricted:
-            print("denied", "restricted")
             showAlert = true
             userLocation = nil
         default:
-            showAlert.toggle()
+            showAlert = true
             userLocation = nil
         }
     }
