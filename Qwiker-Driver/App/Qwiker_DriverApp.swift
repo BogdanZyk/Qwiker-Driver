@@ -10,9 +10,11 @@ import Firebase
 
 @main
 struct Qwiker_DriverApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.light)
         }
     }
 }

@@ -18,7 +18,7 @@ struct PrimaryTextFieldView: View {
         .padding(.horizontal)
         .frame(height: 50)
         .background(Color.white, in: RoundedRectangle(cornerRadius: 5))
-        .background(Color.secondaryGrey, in: RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 1.5))
+        .background(Color.secondaryGrey, in: RoundedRectangle(cornerRadius: 5).stroke(lineWidth: 1.5))
         .font(.poppinsRegular(size: 18))
     }
 }

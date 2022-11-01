@@ -8,9 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var locationManager = LocationManager.shared
+    @StateObject var authViewModel = AuthenticationViewModel()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Group{
+            if authViewModel.userSession == nil{
+                LoginView()
+                    .environmentObject(authViewModel)
+            }else{
+                VStack{
+                    Text("home")
+                    Button("Log out", action: authViewModel.signOut)
+                }
+                
+            }
+        }
+        .alert("Allow your location in the settings", isPresented: $locationManager.showAlert) {
+            Button("Open settings", action: Helpers.openSettings)
+        }
+        .fullScreenCover(isPresented: $authViewModel.isShowDriverRegistrationView) {
+            DriverRegistrationView()
+                .environmentObject(authViewModel)
+        }
     }
 }
 

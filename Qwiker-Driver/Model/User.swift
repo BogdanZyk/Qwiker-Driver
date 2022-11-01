@@ -26,3 +26,4 @@ struct Rider: Codable {
 
     var uid: String { return id ?? "" }
 }
+

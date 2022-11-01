@@ -8,13 +8,13 @@
 import Foundation
 
 struct Vehicle: Codable {
-    let make: String
-    let model: String
-    let year: Int
-    let color: VehicleColors
-    let licensePlateNumber: String
-    let type: RideType
-    let number: String
+    var make: String
+    var model: String
+    var year: String
+    var color: VehicleColors
+    var licensePlateNumber: String
+    var type: RideType
+    var number: String
 }
 
 enum VehicleColors: Int, CaseIterable, Identifiable, Codable {
