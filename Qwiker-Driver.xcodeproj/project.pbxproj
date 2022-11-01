@@ -13,7 +13,6 @@
 		5A96268829110A36002ADB48 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A96268729110A36002ADB48 /* Preview Assets.xcassets */; };
 		5A96269729110AAD002ADB48 /* FontExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96269629110AAD002ADB48 /* FontExt.swift */; };
 		5A96269929110AC7002ADB48 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96269829110AC7002ADB48 /* ErrorHandler.swift */; };
-		5A96269C29110AF0002ADB48 /* MapHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96269B29110AF0002ADB48 /* MapHelpers.swift */; };
 		5A96269F29110B45002ADB48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96269E29110B45002ADB48 /* LocationManager.swift */; };
 		5A9626A129110B74002ADB48 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626A029110B74002ADB48 /* Color.swift */; };
 		5A9626A329110B89002ADB48 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626A229110B89002ADB48 /* View.swift */; };
@@ -44,7 +43,6 @@
 		5A9626DF29111751002ADB48 /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626DE29111751002ADB48 /* PrimaryTextField.swift */; };
 		5A9626E12911177A002ADB48 /* CustomLazyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626E02911177A002ADB48 /* CustomLazyImage.swift */; };
 		5A9626E329111795002ADB48 /* CustomCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626E229111795002ADB48 /* CustomCorners.swift */; };
-		5A9626E72911214A002ADB48 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626E62911214A002ADB48 /* Helpers.swift */; };
 		5A9626EA2911223F002ADB48 /* FbConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626E92911223F002ADB48 /* FbConstants.swift */; };
 		5A9626EC29112278002ADB48 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626EB29112278002ADB48 /* UserService.swift */; };
 		5A9626EE29112C1E002ADB48 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626ED29112C1E002ADB48 /* LoginView.swift */; };
@@ -64,7 +62,6 @@
 		5A96268729110A36002ADB48 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5A96269629110AAD002ADB48 /* FontExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExt.swift; sourceTree = "<group>"; };
 		5A96269829110AC7002ADB48 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
-		5A96269B29110AF0002ADB48 /* MapHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHelpers.swift; sourceTree = "<group>"; };
 		5A96269E29110B45002ADB48 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5A9626A029110B74002ADB48 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5A9626A229110B89002ADB48 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -89,7 +86,6 @@
 		5A9626DE29111751002ADB48 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		5A9626E02911177A002ADB48 /* CustomLazyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLazyImage.swift; sourceTree = "<group>"; };
 		5A9626E229111795002ADB48 /* CustomCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorners.swift; sourceTree = "<group>"; };
-		5A9626E62911214A002ADB48 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		5A9626E92911223F002ADB48 /* FbConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FbConstants.swift; sourceTree = "<group>"; };
 		5A9626EB29112278002ADB48 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		5A9626ED29112C1E002ADB48 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -204,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				5A9626E829112231002ADB48 /* Constants */,
-				5A96269A29110AE8002ADB48 /* Helpers */,
 				5A96269529110AA3002ADB48 /* Font */,
 				5A96269829110AC7002ADB48 /* ErrorHandler.swift */,
 			);
@@ -244,15 +239,6 @@
 				5A96269629110AAD002ADB48 /* FontExt.swift */,
 			);
 			path = Font;
-			sourceTree = "<group>";
-		};
-		5A96269A29110AE8002ADB48 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				5A96269B29110AF0002ADB48 /* MapHelpers.swift */,
-				5A9626E62911214A002ADB48 /* Helpers.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		5A9626B429110E1B002ADB48 /* Onboard */ = {
@@ -439,7 +425,6 @@
 				5A9626A929110BEA002ADB48 /* MapKit.swift in Sources */,
 				5A9626F7291130BD002ADB48 /* DriverRegistarionViewModel.swift in Sources */,
 				5A9626F229113091002ADB48 /* DriverRegistrationView.swift in Sources */,
-				5A9626E72911214A002ADB48 /* Helpers.swift in Sources */,
 				5A9626E329111795002ADB48 /* CustomCorners.swift in Sources */,
 				5A9626FC291149C7002ADB48 /* ImagePicker.swift in Sources */,
 				5A9626FE29114DA4002ADB48 /* ImageUploader.swift in Sources */,
@@ -454,7 +439,6 @@
 				5A9626E12911177A002ADB48 /* CustomLazyImage.swift in Sources */,
 				5A9626D42911115C002ADB48 /* AppLocation.swift in Sources */,
 				5A96269729110AAD002ADB48 /* FontExt.swift in Sources */,
-				5A96269C29110AF0002ADB48 /* MapHelpers.swift in Sources */,
 				5A9626F929113355002ADB48 /* CustomProgressView.swift in Sources */,
 				5A9626DD29111720002ADB48 /* PrimaryButtonView.swift in Sources */,
 			);
