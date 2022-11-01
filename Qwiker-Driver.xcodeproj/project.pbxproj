@@ -11,6 +11,19 @@
 		5A96268329110A35002ADB48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96268229110A35002ADB48 /* ContentView.swift */; };
 		5A96268529110A36002ADB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A96268429110A36002ADB48 /* Assets.xcassets */; };
 		5A96268829110A36002ADB48 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A96268729110A36002ADB48 /* Preview Assets.xcassets */; };
+		5A96269729110AAD002ADB48 /* FontExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96269629110AAD002ADB48 /* FontExt.swift */; };
+		5A96269929110AC7002ADB48 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96269829110AC7002ADB48 /* ErrorHandler.swift */; };
+		5A96269C29110AF0002ADB48 /* MapHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96269B29110AF0002ADB48 /* MapHelpers.swift */; };
+		5A96269F29110B45002ADB48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96269E29110B45002ADB48 /* LocationManager.swift */; };
+		5A9626A129110B74002ADB48 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626A029110B74002ADB48 /* Color.swift */; };
+		5A9626A329110B89002ADB48 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626A229110B89002ADB48 /* View.swift */; };
+		5A9626A529110B9F002ADB48 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626A429110B9F002ADB48 /* String.swift */; };
+		5A9626A729110BD6002ADB48 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626A629110BD6002ADB48 /* UIImage.swift */; };
+		5A9626A929110BEA002ADB48 /* MapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626A829110BEA002ADB48 /* MapKit.swift */; };
+		5A9626AB29110BFE002ADB48 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626AA29110BFE002ADB48 /* UIApplication.swift */; };
+		5A9626AF29110C49002ADB48 /* Medel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A9626AC29110C49002ADB48 /* Medel.ttf */; };
+		5A9626B029110C49002ADB48 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A9626AD29110C49002ADB48 /* Poppins-Medium.ttf */; };
+		5A9626B129110C49002ADB48 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A9626AE29110C49002ADB48 /* Poppins-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +32,20 @@
 		5A96268229110A35002ADB48 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5A96268429110A36002ADB48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A96268729110A36002ADB48 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5A96269629110AAD002ADB48 /* FontExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExt.swift; sourceTree = "<group>"; };
+		5A96269829110AC7002ADB48 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		5A96269B29110AF0002ADB48 /* MapHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHelpers.swift; sourceTree = "<group>"; };
+		5A96269E29110B45002ADB48 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		5A9626A029110B74002ADB48 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		5A9626A229110B89002ADB48 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		5A9626A429110B9F002ADB48 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		5A9626A629110BD6002ADB48 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		5A9626A829110BEA002ADB48 /* MapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKit.swift; sourceTree = "<group>"; };
+		5A9626AA29110BFE002ADB48 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		5A9626AC29110C49002ADB48 /* Medel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Medel.ttf; sourceTree = "<group>"; };
+		5A9626AD29110C49002ADB48 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		5A9626AE29110C49002ADB48 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		5A9626B229110CAB002ADB48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +78,14 @@
 		5A96267F29110A35002ADB48 /* Qwiker-Driver */ = {
 			isa = PBXGroup;
 			children = (
-				5A96268029110A35002ADB48 /* Qwiker_DriverApp.swift */,
-				5A96268229110A35002ADB48 /* ContentView.swift */,
+				5A9626B229110CAB002ADB48 /* Info.plist */,
+				5A96268E29110A44002ADB48 /* App */,
+				5A96269329110A6A002ADB48 /* Extensions */,
+				5A96269229110A63002ADB48 /* Utils */,
+				5A96269129110A5C002ADB48 /* Model */,
+				5A96269029110A57002ADB48 /* Services */,
+				5A96268F29110A4D002ADB48 /* Managers */,
+				5A96269429110A73002ADB48 /* Core */,
 				5A96268429110A36002ADB48 /* Assets.xcassets */,
 				5A96268629110A36002ADB48 /* Preview Content */,
 			);
@@ -65,6 +98,86 @@
 				5A96268729110A36002ADB48 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5A96268E29110A44002ADB48 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5A96268229110A35002ADB48 /* ContentView.swift */,
+				5A96268029110A35002ADB48 /* Qwiker_DriverApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5A96268F29110A4D002ADB48 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5A96269E29110B45002ADB48 /* LocationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		5A96269029110A57002ADB48 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5A96269129110A5C002ADB48 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5A96269229110A63002ADB48 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5A96269A29110AE8002ADB48 /* Helpers */,
+				5A96269529110AA3002ADB48 /* Font */,
+				5A96269829110AC7002ADB48 /* ErrorHandler.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5A96269329110A6A002ADB48 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5A9626A029110B74002ADB48 /* Color.swift */,
+				5A9626A229110B89002ADB48 /* View.swift */,
+				5A9626A429110B9F002ADB48 /* String.swift */,
+				5A9626A629110BD6002ADB48 /* UIImage.swift */,
+				5A9626A829110BEA002ADB48 /* MapKit.swift */,
+				5A9626AA29110BFE002ADB48 /* UIApplication.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5A96269429110A73002ADB48 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5A96269529110AA3002ADB48 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				5A9626AC29110C49002ADB48 /* Medel.ttf */,
+				5A9626AD29110C49002ADB48 /* Poppins-Medium.ttf */,
+				5A9626AE29110C49002ADB48 /* Poppins-Regular.ttf */,
+				5A96269629110AAD002ADB48 /* FontExt.swift */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		5A96269A29110AE8002ADB48 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5A96269B29110AF0002ADB48 /* MapHelpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +238,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A9626B129110C49002ADB48 /* Poppins-Regular.ttf in Resources */,
 				5A96268829110A36002ADB48 /* Preview Assets.xcassets in Resources */,
+				5A9626AF29110C49002ADB48 /* Medel.ttf in Resources */,
 				5A96268529110A36002ADB48 /* Assets.xcassets in Resources */,
+				5A9626B029110C49002ADB48 /* Poppins-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +253,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A9626AB29110BFE002ADB48 /* UIApplication.swift in Sources */,
+				5A9626A329110B89002ADB48 /* View.swift in Sources */,
+				5A9626A729110BD6002ADB48 /* UIImage.swift in Sources */,
 				5A96268329110A35002ADB48 /* ContentView.swift in Sources */,
+				5A96269929110AC7002ADB48 /* ErrorHandler.swift in Sources */,
+				5A9626A529110B9F002ADB48 /* String.swift in Sources */,
+				5A9626A929110BEA002ADB48 /* MapKit.swift in Sources */,
+				5A9626A129110B74002ADB48 /* Color.swift in Sources */,
+				5A96269F29110B45002ADB48 /* LocationManager.swift in Sources */,
 				5A96268129110A35002ADB48 /* Qwiker_DriverApp.swift in Sources */,
+				5A96269729110AAD002ADB48 /* FontExt.swift in Sources */,
+				5A96269C29110AF0002ADB48 /* MapHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,11 +396,14 @@
 				DEVELOPMENT_TEAM = 92PU6D6MCQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Qwiker-Driver/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,11 +428,14 @@
 				DEVELOPMENT_TEAM = 92PU6D6MCQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Qwiker-Driver/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
