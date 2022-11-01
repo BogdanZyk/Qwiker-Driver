@@ -9,6 +9,12 @@ import CoreLocation
 import MapKit
 import SwiftUI
 
+
+enum RegionType: String {
+    case pickup
+    case dropoff
+}
+
 let SPAN = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
 
 class LocationManager: NSObject, ObservableObject{
@@ -54,10 +60,19 @@ class LocationManager: NSObject, ObservableObject{
     
     //MARK: - Map helpers
     
-    
-    private func createCustomRegion(coordinates: CLLocationCoordinate2D) {
-        let region = CLCircularRegion(center: coordinates, radius: 25, identifier: "type.rawValue")
+    private func createCustomRegion(withType type: RegionType, coordinates: CLLocationCoordinate2D) {
+        let region = CLCircularRegion(center: coordinates, radius: 25, identifier: type.rawValue)
         locationManager.startMonitoring(for: region)
+    }
+    
+    func createPickupRegionForTrip(_ trip: Trip) {
+        print("DEBUG: Did create pickup region..")
+        createCustomRegion(withType: .pickup, coordinates: trip.pickupLocationCoordiantes)
+    }
+    
+    func createDropoffRegionForTrip(_ trip: Trip) {
+        print("DEBUG: Did create dropoff region..")
+        createCustomRegion(withType: .dropoff, coordinates: trip.dropoffLocationCoordinates)
     }
     
     func setUserLocationInMap(){

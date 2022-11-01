@@ -52,6 +52,14 @@
 		5A9626F929113355002ADB48 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626F829113355002ADB48 /* CustomProgressView.swift */; };
 		5A9626FC291149C7002ADB48 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626FB291149C7002ADB48 /* ImagePicker.swift */; };
 		5A9626FE29114DA4002ADB48 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626FD29114DA4002ADB48 /* ImageUploader.swift */; };
+		5A962704291171CF002ADB48 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A962703291171CF002ADB48 /* HomeViewModel.swift */; };
+		5A96270629117231002ADB48 /* MapViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96270529117231002ADB48 /* MapViewState.swift */; };
+		5A96270829117269002ADB48 /* TripService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96270729117269002ADB48 /* TripService.swift */; };
+		5A96270A29117789002ADB48 /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96270929117789002ADB48 /* MapViewRepresentable.swift */; };
+		5A96270C29117B16002ADB48 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96270B29117B16002ADB48 /* HomeView.swift */; };
+		5A96270F29117C80002ADB48 /* AcceptTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96270E29117C80002ADB48 /* AcceptTripView.swift */; };
+		5A9627182911845A002ADB48 /* MapHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9627162911845A002ADB48 /* MapHelpers.swift */; };
+		5A9627192911845A002ADB48 /* HelpersFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9627172911845A002ADB48 /* HelpersFunc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +103,14 @@
 		5A9626F829113355002ADB48 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		5A9626FB291149C7002ADB48 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5A9626FD29114DA4002ADB48 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		5A962703291171CF002ADB48 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5A96270529117231002ADB48 /* MapViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewState.swift; sourceTree = "<group>"; };
+		5A96270729117269002ADB48 /* TripService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripService.swift; sourceTree = "<group>"; };
+		5A96270929117789002ADB48 /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = "<group>"; };
+		5A96270B29117B16002ADB48 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5A96270E29117C80002ADB48 /* AcceptTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptTripView.swift; sourceTree = "<group>"; };
+		5A9627162911845A002ADB48 /* MapHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelpers.swift; sourceTree = "<group>"; };
+		5A9627172911845A002ADB48 /* HelpersFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpersFunc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +195,7 @@
 			children = (
 				5A9626EB29112278002ADB48 /* UserService.swift */,
 				5A9626FD29114DA4002ADB48 /* ImageUploader.swift */,
+				5A96270729117269002ADB48 /* TripService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -192,6 +209,7 @@
 				5A9626D32911115C002ADB48 /* AppLocation.swift */,
 				5A9626D529111185002ADB48 /* Passenger.swift */,
 				5A9626D729111293002ADB48 /* RideType.swift */,
+				5A96270529117231002ADB48 /* MapViewState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,6 +217,7 @@
 		5A96269229110A63002ADB48 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5A9627152911845A002ADB48 /* Helpers */,
 				5A9626E829112231002ADB48 /* Constants */,
 				5A96269529110AA3002ADB48 /* Font */,
 				5A96269829110AC7002ADB48 /* ErrorHandler.swift */,
@@ -222,6 +241,9 @@
 		5A96269429110A73002ADB48 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5A96270D29117C68002ADB48 /* Trip */,
+				5A9627002911719B002ADB48 /* Map */,
+				5A9626FF29117190002ADB48 /* Home */,
 				5A9626F329113097002ADB48 /* DriverRegistartion */,
 				5A9626DB29111712002ADB48 /* ViewComponents */,
 				5A9626B529110E24002ADB48 /* Authentication */,
@@ -321,6 +343,56 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		5A9626FF29117190002ADB48 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5A962702291171A5002ADB48 /* View */,
+				5A962701291171A1002ADB48 /* ViewModel */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5A9627002911719B002ADB48 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				5A96270929117789002ADB48 /* MapViewRepresentable.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		5A962701291171A1002ADB48 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5A962703291171CF002ADB48 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5A962702291171A5002ADB48 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5A96270B29117B16002ADB48 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5A96270D29117C68002ADB48 /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				5A96270E29117C80002ADB48 /* AcceptTripView.swift */,
+			);
+			path = Trip;
+			sourceTree = "<group>";
+		};
+		5A9627152911845A002ADB48 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5A9627162911845A002ADB48 /* MapHelpers.swift */,
+				5A9627172911845A002ADB48 /* HelpersFunc.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -410,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A9626B929110E66002ADB48 /* AuthenticationViewModel.swift in Sources */,
+				5A96270F29117C80002ADB48 /* AcceptTripView.swift in Sources */,
 				5A9626AB29110BFE002ADB48 /* UIApplication.swift in Sources */,
 				5A9626EC29112278002ADB48 /* UserService.swift in Sources */,
 				5A9626A329110B89002ADB48 /* View.swift in Sources */,
@@ -419,27 +492,34 @@
 				5A96268329110A35002ADB48 /* ContentView.swift in Sources */,
 				5A96269929110AC7002ADB48 /* ErrorHandler.swift in Sources */,
 				5A9626CE291110EF002ADB48 /* User.swift in Sources */,
+				5A9627192911845A002ADB48 /* HelpersFunc.swift in Sources */,
+				5A9627182911845A002ADB48 /* MapHelpers.swift in Sources */,
 				5A9626D829111293002ADB48 /* RideType.swift in Sources */,
 				5A9626DF29111751002ADB48 /* PrimaryTextField.swift in Sources */,
 				5A9626A529110B9F002ADB48 /* String.swift in Sources */,
 				5A9626A929110BEA002ADB48 /* MapKit.swift in Sources */,
 				5A9626F7291130BD002ADB48 /* DriverRegistarionViewModel.swift in Sources */,
+				5A96270C29117B16002ADB48 /* HomeView.swift in Sources */,
 				5A9626F229113091002ADB48 /* DriverRegistrationView.swift in Sources */,
+				5A96270829117269002ADB48 /* TripService.swift in Sources */,
 				5A9626E329111795002ADB48 /* CustomCorners.swift in Sources */,
 				5A9626FC291149C7002ADB48 /* ImagePicker.swift in Sources */,
 				5A9626FE29114DA4002ADB48 /* ImageUploader.swift in Sources */,
 				5A9626A129110B74002ADB48 /* Color.swift in Sources */,
 				5A9626DA2911168E002ADB48 /* OnboardingView.swift in Sources */,
 				5A96269F29110B45002ADB48 /* LocationManager.swift in Sources */,
+				5A962704291171CF002ADB48 /* HomeViewModel.swift in Sources */,
 				5A96268129110A35002ADB48 /* Qwiker_DriverApp.swift in Sources */,
 				5A9626F029112C40002ADB48 /* VerificationView.swift in Sources */,
 				5A9626EA2911223F002ADB48 /* FbConstants.swift in Sources */,
+				5A96270629117231002ADB48 /* MapViewState.swift in Sources */,
 				5A9626D629111185002ADB48 /* Passenger.swift in Sources */,
 				5A9626EE29112C1E002ADB48 /* LoginView.swift in Sources */,
 				5A9626E12911177A002ADB48 /* CustomLazyImage.swift in Sources */,
 				5A9626D42911115C002ADB48 /* AppLocation.swift in Sources */,
 				5A96269729110AAD002ADB48 /* FontExt.swift in Sources */,
 				5A9626F929113355002ADB48 /* CustomProgressView.swift in Sources */,
+				5A96270A29117789002ADB48 /* MapViewRepresentable.swift in Sources */,
 				5A9626DD29111720002ADB48 /* PrimaryButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,11 +16,8 @@ struct ContentView: View {
                 LoginView()
                     .environmentObject(authViewModel)
             }else{
-                VStack{
-                    Text("home")
-                    Button("Log out", action: authViewModel.signOut)
-                }
-                
+                HomeView()
+                    .environmentObject(authViewModel)
             }
         }
         .alert("Allow your location in the settings", isPresented: $locationManager.showAlert) {
