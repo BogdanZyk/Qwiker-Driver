@@ -15,7 +15,7 @@ enum RegionType: String {
     case dropoff
 }
 
-let SPAN = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+let SPAN = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
 
 class LocationManager: NSObject, ObservableObject{
     
@@ -28,6 +28,8 @@ class LocationManager: NSObject, ObservableObject{
     @Published var showAlert: Bool = false
     @Published var isAuthorization: Bool = false
     @Published var userLocation: CLLocation?
+    @Published var didEnterPickupRegion = false
+    @Published var didEnterDropoffRegion = false
     
 
     private override init() {
@@ -116,6 +118,29 @@ extension LocationManager: CLLocationManagerDelegate{
         default:
             showAlert = true
             userLocation = nil
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        if region.identifier == RegionType.pickup.rawValue {
+            print("DEBUG: Did enter region..")
+            didEnterPickupRegion = true
+        }
+        
+        if region.identifier == RegionType.dropoff.rawValue {
+            print("DEBUG: Did start montioring destination region \(region)")
+            didEnterDropoffRegion = true
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        if region.identifier == RegionType.pickup.rawValue {
+            print("DEBUG: Did exit pickup region")
+            didEnterPickupRegion = false
+        }
+        
+        if region.identifier == RegionType.dropoff.rawValue {
+            didEnterDropoffRegion = false
         }
     }
 }

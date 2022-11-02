@@ -20,10 +20,11 @@ struct MapViewRepresentable: UIViewRepresentable {
     // MARK: - Protocol Functions
     
     func makeUIView(context: Context) -> MKMapView {
-        mapView.isRotateEnabled = false
+        mapView.cameraZoomRange = .init(maxCenterCoordinateDistance: CLLocationDistance.init(5000.0))
         mapView.showsUserLocation = true
         mapView.delegate = context.coordinator
         locationManager.mapView = mapView
+        
         return mapView
     }
     
@@ -31,11 +32,16 @@ struct MapViewRepresentable: UIViewRepresentable {
         switch homeViewModel.mapState {
         case .noInput, .tripCancelled:
             context.coordinator.clearMapView()
-        case .tripAccepted, .tripRequested:
+        case .tripAccepted:
+            context.coordinator.clearMapView()
+            context.coordinator.addAnnotationAndGeneratePolylineToPassenger(isRect: false)
+            context.coordinator.setCamera()
+        case .tripRequested:
             context.coordinator.addAnnotationAndGeneratePolylineToPassenger()
         case .tripInProgress:
             context.coordinator.clearMapView()
             context.coordinator.addDestinationAnnoAndPolyline()
+            context.coordinator.setCamera()
         default:
             break
         }
@@ -133,14 +139,13 @@ extension MapViewRepresentable {
         
         //for progress trip
         func addDestinationAnnoAndPolyline() {
-            guard let userCoordinate = userLocation?.coordinate,
-                  let trip = parent.homeViewModel.trip else { return }
-            addAndSelectAnnotation(withCoordinate: userCoordinate)
-            configurePolyline(withDestinationCoordinate: trip.pickupLocationCoordiantes)
+            guard let trip = parent.homeViewModel.trip else { return }
+            addAndSelectAnnotation(withCoordinate: trip.dropoffLocationCoordinates)
+            configurePolyline(withDestinationCoordinate: trip.dropoffLocationCoordinates, withRect: false)
         }
         
         //for accept trip
-        func addAnnotationAndGeneratePolylineToPassenger() {
+        func addAnnotationAndGeneratePolylineToPassenger(isRect: Bool = true) {
             guard let trip = parent.homeViewModel.trip else { return }
             self.parent.mapView.removeAnnotations(parent.mapView.annotations)
             addAndSelectAnnotation(withCoordinate: trip.pickupLocationCoordiantes)
@@ -157,17 +162,26 @@ extension MapViewRepresentable {
         }
         
         
-        func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D) {
+        func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D, withRect: Bool = false) {
             guard let userLocation = self.userLocation else { return }
-            
             MapHelpers.getDestinationRoute(from: userLocation.coordinate, to: coordinate) { route in
-                //self.parent.homeViewModel.mapState = .polylineAdded
-                //self.parent.homeViewModel.routeToPassegers = route
                 self.parent.mapView.addOverlay(route.polyline)
-                let rect = self.parent.mapView.mapRectThatFits(route.polyline.boundingMapRect,
-                                                               edgePadding: .init(top: 64, left: 32, bottom: 500, right: 32))
-                self.parent.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
+                if withRect{
+                    let rect = self.parent.mapView.mapRectThatFits(route.polyline.boundingMapRect,
+                                                                   edgePadding: .init(top: 64, left: 32, bottom: 500, right: 32))
+                    self.parent.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
+                }
             }
+        }
+        
+        func setCamera(){
+            //guard let userLocation = userLocation else {return}
+//            let userCoordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+//            let eyeCoordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.latitude)
+//            let mapCamera = MKMapCamera(lookingAtCenter: userCoordinate, fromEyeCoordinate: eyeCoordinate, eyeAltitude: 400.0)
+            parent.mapView.setUserTrackingMode(.follow, animated: true)
+            parent.mapView.cameraZoomRange = .init(maxCenterCoordinateDistance: CLLocationDistance.init(800.0))
+            //parent.mapView.setCamera(mapCamera, animated: true)
         }
         
         //MARK: - Add drivers annonatations

@@ -75,11 +75,11 @@ extension HomeView{
         case .tripRequested:
             AnyView(AcceptTripView())
         case .tripAccepted:
-            AnyView(EmptyView())
+            AnyView(EnRouteToPickupLocationView())
         case .tripCancelled:
             AnyView(CancelledView())
         case .driverArrived:
-            AnyView(EmptyView())
+            AnyView(PickupPassengerView())
         case .tripInProgress:
             AnyView(EmptyView())
             //return AnyView(TripInProgressView())

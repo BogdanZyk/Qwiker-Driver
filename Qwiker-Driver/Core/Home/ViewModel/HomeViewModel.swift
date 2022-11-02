@@ -77,13 +77,17 @@ extension HomeViewModel {
                 print("DEBUG", trip.tripState)
                 
                 switch trip.tripState{
-                    
+            
                 case .requested:
                     self.mapState = .tripRequested
                 case .cancelled:
                     self.mapState = .tripCancelled
                 case .complete:
                     break
+                case .inProgress:
+                    self.mapState = .tripInProgress
+                case .accepted:
+                    self.mapState = .tripAccepted
                 default:
                     break
                 }

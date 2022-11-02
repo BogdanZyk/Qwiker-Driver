@@ -35,7 +35,7 @@ struct AcceptTripView: View {
                     secForAccept -= 1.0
                 }
             }else{
-                //homeVM.rejectTrip()
+                homeVM.rejectTrip()
             }
         }
     }
@@ -77,12 +77,7 @@ extension AcceptTripView{
     }
     
     private var locationSection: some View{
-        VStack(alignment: .leading, spacing: 10){
-            locationRowView(isDestination: false, title: homeVM.trip?.pickupLocationAddress ?? "")
-            Divider()
-            locationRowView(isDestination: true, title: homeVM.trip?.dropoffLocationName ?? "")
-        }
-        .hLeading()
+        LocationRowsViewComponent(pickupLocationAddress: homeVM.trip?.pickupLocationAddress ?? "", dropoffLocationName: homeVM.trip?.dropoffLocationName ?? "")
     }
 }
 
@@ -90,7 +85,7 @@ extension AcceptTripView{
 extension AcceptTripView{
     private func driverBonusInfoView(isPriceMode: Bool, value: String) -> some View{
         HStack(spacing: 15){
-            Image(systemName: isPriceMode ? "bolt.fill" : "star.fill")
+            Image(systemName: isPriceMode ? "bolt.fill" : "seal.fill")
                 .imageScale(.large)
                 .foregroundColor(isPriceMode ? .green : .primaryBlue)
             VStack(alignment: .leading){
@@ -103,27 +98,7 @@ extension AcceptTripView{
             }
         }
     }
-    private func locationRowView(isDestination: Bool = false, title: String) -> some View{
-        HStack {
-            Group{
-               if isDestination{
-                    Circle()
-                        .fill(Color.primaryBlue)
-               }else{
-                   Rectangle()
-                       .fill(Color.black.opacity(0.8))
-               }
-            }
-            .frame(width: 10, height: 10)
-            
-            VStack(alignment: .leading, spacing: 5) {
-                Text(isDestination ? "Where to:" : "Where from:")
-                    .font(.poppinsMedium(size: 12))
-                Text(title)
-                    .font(.poppinsMedium(size: 20))
-            }
-        }
-    }
+
     private var acceptButtonView: some View{
         Button {
             homeVM.acceptTrip()

@@ -19,6 +19,10 @@
 		5A8DB5A329127E9F004B640E /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DB5A229127E9F004B640E /* UserAvatarView.swift */; };
 		5A8DB5A829128019004B640E /* MainActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DB5A729128019004B640E /* MainActionButton.swift */; };
 		5A8DB5AC29128678004B640E /* ActiveToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DB5AB29128678004B640E /* ActiveToggleView.swift */; };
+		5A8DB5AE2912A4B2004B640E /* PickupPassengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DB5AD2912A4B2004B640E /* PickupPassengerView.swift */; };
+		5A8DB5B02912A6AD004B640E /* EnRouteToPickupLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DB5AF2912A6AD004B640E /* EnRouteToPickupLocationView.swift */; };
+		5A8DB5B32912A9C2004B640E /* LocationRowsViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DB5B22912A9C2004B640E /* LocationRowsViewComponent.swift */; };
+		5A8DB5B52912AB65004B640E /* LocationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DB5B42912AB65004B640E /* LocationCellView.swift */; };
 		5A96268129110A35002ADB48 /* Qwiker_DriverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96268029110A35002ADB48 /* Qwiker_DriverApp.swift */; };
 		5A96268329110A35002ADB48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96268229110A35002ADB48 /* ContentView.swift */; };
 		5A96268529110A36002ADB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A96268429110A36002ADB48 /* Assets.xcassets */; };
@@ -86,6 +90,10 @@
 		5A8DB5A229127E9F004B640E /* UserAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
 		5A8DB5A729128019004B640E /* MainActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainActionButton.swift; sourceTree = "<group>"; };
 		5A8DB5AB29128678004B640E /* ActiveToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveToggleView.swift; sourceTree = "<group>"; };
+		5A8DB5AD2912A4B2004B640E /* PickupPassengerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupPassengerView.swift; sourceTree = "<group>"; };
+		5A8DB5AF2912A6AD004B640E /* EnRouteToPickupLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnRouteToPickupLocationView.swift; sourceTree = "<group>"; };
+		5A8DB5B22912A9C2004B640E /* LocationRowsViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRowsViewComponent.swift; sourceTree = "<group>"; };
+		5A8DB5B42912AB65004B640E /* LocationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCellView.swift; sourceTree = "<group>"; };
 		5A96267D29110A35002ADB48 /* Qwiker-Driver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Qwiker-Driver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A96268029110A35002ADB48 /* Qwiker_DriverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Qwiker_DriverApp.swift; sourceTree = "<group>"; };
 		5A96268229110A35002ADB48 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -156,8 +164,11 @@
 		5A8DB58C29125E80004B640E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5A8DB5B12912A9A0004B640E /* Components */,
 				5A8DB58D29125E8B004B640E /* AcceptTripView.swift */,
 				5A8DB59629127944004B640E /* CancelledView.swift */,
+				5A8DB5AD2912A4B2004B640E /* PickupPassengerView.swift */,
+				5A8DB5AF2912A6AD004B640E /* EnRouteToPickupLocationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,6 +205,15 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5A8DB5B12912A9A0004B640E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5A8DB5B22912A9C2004B640E /* LocationRowsViewComponent.swift */,
+				5A8DB5B42912AB65004B640E /* LocationCellView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		5A96267429110A35002ADB48 = {
@@ -560,7 +580,9 @@
 				5A9626EC29112278002ADB48 /* UserService.swift in Sources */,
 				5A8DB58B29125A21004B640E /* bottomSheetView.swift in Sources */,
 				5A8DB5902912676E004B640E /* Preview.swift in Sources */,
+				5A8DB5B02912A6AD004B640E /* EnRouteToPickupLocationView.swift in Sources */,
 				5A9626A329110B89002ADB48 /* View.swift in Sources */,
+				5A8DB5AE2912A4B2004B640E /* PickupPassengerView.swift in Sources */,
 				5A9626D029111110002ADB48 /* Vehicle.swift in Sources */,
 				5A9626D229111146002ADB48 /* Trip.swift in Sources */,
 				5A9626A729110BD6002ADB48 /* UIImage.swift in Sources */,
@@ -582,8 +604,10 @@
 				5A9626F229113091002ADB48 /* DriverRegistrationView.swift in Sources */,
 				5A96270829117269002ADB48 /* TripService.swift in Sources */,
 				5A9626E329111795002ADB48 /* CustomCorners.swift in Sources */,
+				5A8DB5B32912A9C2004B640E /* LocationRowsViewComponent.swift in Sources */,
 				5A9626FC291149C7002ADB48 /* ImagePicker.swift in Sources */,
 				5A9626FE29114DA4002ADB48 /* ImageUploader.swift in Sources */,
+				5A8DB5B52912AB65004B640E /* LocationCellView.swift in Sources */,
 				5A9626A129110B74002ADB48 /* Color.swift in Sources */,
 				5A8DB58E29125E8B004B640E /* AcceptTripView.swift in Sources */,
 				5A9626DA2911168E002ADB48 /* OnboardingView.swift in Sources */,
