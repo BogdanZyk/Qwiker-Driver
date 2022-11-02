@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var showSideMenu: Bool = false
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @StateObject var homeVM = HomeViewModel()
     var body: some View {
-        ZStack {
-            ZStack(alignment: .bottom){
+        ZStack(alignment: .bottom) {
+            ZStack(alignment: .top){
                 MapViewRepresentable()
                     .ignoresSafeArea()
-                viewForState
-                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
+                mainHomeButton
             }
+            sideMenuView
+            viewForState
+                .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
         }
         .environmentObject(homeVM)
     }
@@ -30,7 +33,43 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
+
+//MARK: - Side Menu
+
 extension HomeView{
+    private var sideMenuView: some View{
+        Group{
+            if showSideMenu {
+                Color.gray.opacity(0.5).ignoresSafeArea()
+                    .onTapGesture {
+                        withAnimation(.spring()){
+                            showSideMenu.toggle()
+                        }
+                    }
+            }
+            SideMenuView(isShowing: $showSideMenu)
+                .frame(width: getRect().width - 50, alignment: .leading)
+                .hLeading()
+                .offset(x: showSideMenu ? 0 : -getRect().width)
+        }
+    }
+}
+
+extension HomeView{
+    
+    private var mainHomeButton: some View{
+        HStack{
+            if homeVM.mapState == .noInput{
+                MainHomeActionButton(showSideMenu: $showSideMenu)
+                    .padding(.leading)
+                    .animation(nil, value: UUID().uuidString)
+                Spacer()
+                ActiveToggle()
+                    .padding(.trailing)
+            }
+        }
+    }
+    
     @ViewBuilder var viewForState: some View {
         switch homeVM.mapState {
         case .tripRequested:
