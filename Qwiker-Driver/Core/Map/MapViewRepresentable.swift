@@ -29,14 +29,13 @@ struct MapViewRepresentable: UIViewRepresentable {
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
         switch homeViewModel.mapState {
-        case .noInput:
+        case .noInput, .tripCancelled:
             context.coordinator.clearMapView()
-        case .tripAccepted:
+        case .tripAccepted, .tripRequested:
             context.coordinator.addAnnotationAndGeneratePolylineToPassenger()
         case .tripInProgress:
             context.coordinator.clearMapView()
-            guard let trip = homeViewModel.trip else { return }
-            context.coordinator.addDestinationAnnoAndPolyline(trip: trip)
+            context.coordinator.addDestinationAnnoAndPolyline()
         default:
             break
         }
@@ -133,8 +132,9 @@ extension MapViewRepresentable {
         }
         
         //for progress trip
-        func addDestinationAnnoAndPolyline(trip: Trip) {
-            guard let userCoordinate = userLocation?.coordinate else {return}
+        func addDestinationAnnoAndPolyline() {
+            guard let userCoordinate = userLocation?.coordinate,
+                  let trip = parent.homeViewModel.trip else { return }
             addAndSelectAnnotation(withCoordinate: userCoordinate)
             configurePolyline(withDestinationCoordinate: trip.pickupLocationCoordiantes)
         }
@@ -161,7 +161,8 @@ extension MapViewRepresentable {
             guard let userLocation = self.userLocation else { return }
             
             MapHelpers.getDestinationRoute(from: userLocation.coordinate, to: coordinate) { route in
-                self.parent.homeViewModel.mapState = .polylineAdded
+                //self.parent.homeViewModel.mapState = .polylineAdded
+                //self.parent.homeViewModel.routeToPassegers = route
                 self.parent.mapView.addOverlay(route.polyline)
                 let rect = self.parent.mapView.mapRectThatFits(route.polyline.boundingMapRect,
                                                                edgePadding: .init(top: 64, left: 32, bottom: 500, right: 32))

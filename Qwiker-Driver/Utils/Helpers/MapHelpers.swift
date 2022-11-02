@@ -44,4 +44,8 @@ final class MapHelpers{
         }
     }
     
+    static func getDistanceInMeters(from currentLocation: CLLocation, to destanationLocation: CLLocation) -> Double{
+        return currentLocation.distance(from: destanationLocation)
+    }
+    
 }

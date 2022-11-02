@@ -12,6 +12,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Firebase
 import SwiftUI
+import MapKit
 
 
 
@@ -22,6 +23,8 @@ final class HomeViewModel: ObservableObject{
     @Published var mapState = MapViewState.noInput
     private var tripService = TripService()
     private var destinationLocation: AppLocation?
+    var routeToPassegers: MKRoute?
+    var roteToPicaupLocation: MKRoute?
     
     init(){
         fetchUser()
