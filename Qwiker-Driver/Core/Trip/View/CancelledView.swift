@@ -14,7 +14,7 @@ struct CancelledView: View {
             Text("Passenger cancels a trip!")
                 .font(.title.weight(.medium))
             PrimaryButtonView(title: "OK") {
-                homeVM.mapState = .noInput
+                homeVM.deleteTrip()
             }
         }
         .padding()

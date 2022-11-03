@@ -5,11 +5,31 @@
 //  Created by Богдан Зыков on 01.11.2022.
 //
 
-
+import FirebaseAuth
 import Firebase
 import FirebaseFirestore
+import GeoFireUtils
 
 struct UserService {
+    
+    
+    
+    static func updateUserLocation(location: CLLocationCoordinate2D){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let hash = Helpers.getGeoHash(forLocation: location)
+        let geoPoint = GeoPoint(latitude: location.latitude,
+                                longitude: location.longitude)
+        
+        FbConstant.COLLECTION_DRIVERS.document(uid).updateData(
+            ["geohash" : hash, "coordinates" : geoPoint])
+        { error in
+            if let error = error{
+                print("DEBUG UPDATE USER LOCATION", error.localizedDescription)
+            }
+        }
+    }
+    
+ 
     
     static func fetchRiderForId(withUid uid: String, completion: @escaping(Rider?, Error?) -> Void) {
         

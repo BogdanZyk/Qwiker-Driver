@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Please allow us to access your location to find you nearby passengers</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -20,6 +18,10 @@
 		<string>Medel.ttf</string>
 		<string></string>
 		<string></string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
 	</array>
 </dict>
 </plist>

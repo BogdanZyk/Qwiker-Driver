@@ -20,11 +20,9 @@ struct MapViewRepresentable: UIViewRepresentable {
     // MARK: - Protocol Functions
     
     func makeUIView(context: Context) -> MKMapView {
-        mapView.cameraZoomRange = .init(maxCenterCoordinateDistance: CLLocationDistance.init(5000.0))
         mapView.showsUserLocation = true
         mapView.delegate = context.coordinator
         locationManager.mapView = mapView
-        
         return mapView
     }
     
@@ -35,13 +33,11 @@ struct MapViewRepresentable: UIViewRepresentable {
         case .tripAccepted:
             context.coordinator.clearMapView()
             context.coordinator.addAnnotationAndGeneratePolylineToPassenger(isRect: false)
-            context.coordinator.setCamera()
         case .tripRequested:
-            context.coordinator.addAnnotationAndGeneratePolylineToPassenger()
+            context.coordinator.addAnnotationAndGeneratePolylineToPassenger(isRect: false)
         case .tripInProgress:
             context.coordinator.clearMapView()
             context.coordinator.addDestinationAnnoAndPolyline()
-            context.coordinator.setCamera()
         default:
             break
         }
@@ -53,6 +49,19 @@ struct MapViewRepresentable: UIViewRepresentable {
     
 }
 
+//MARK: - MapHelpers
+extension MapViewRepresentable{
+    func setCamera(){
+        guard let userLocation = locationManager.userLocation else {return}
+            let userCoordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+            let eyeCoordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.latitude)
+            let mapCamera = MKMapCamera(lookingAtCenter: userCoordinate, fromEyeCoordinate: eyeCoordinate, eyeAltitude: 400.0)
+        mapView.setUserTrackingMode(.followWithHeading, animated: true)
+        mapView.cameraZoomRange = .init(minCenterCoordinateDistance: 100, maxCenterCoordinateDistance: 800)
+        mapView.setCamera(mapCamera, animated: true)
+    }
+}
+
 extension MapViewRepresentable {
 
     class MapCoordinator: NSObject, MKMapViewDelegate {
@@ -61,8 +70,6 @@ extension MapViewRepresentable {
         
         let parent: MapViewRepresentable
         var userLocation: MKUserLocation?
-        var currentLocation: CLLocationCoordinate2D?
-        var currentRegion: MKCoordinateRegion?
         var didSetVisibleMapRectForTrip = false
         // MARK: - Lifecycle
         
@@ -73,14 +80,9 @@ extension MapViewRepresentable {
         
         // MARK: - MKMapViewDelegate
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-            guard userLocation != self.userLocation else {return}
             self.userLocation = userLocation
-            let region = MKCoordinateRegion(
-                center: userLocation.coordinate,
-                span: SPAN
-            )
-            self.currentRegion = region
-            parent.mapView.setRegion(region, animated: true)
+            
+            
         }
         
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -99,20 +101,24 @@ extension MapViewRepresentable {
                 return customAnnotationView
             }
             
-//            if let currentAnno = annotation as? CurrentAnnotation {
-//                let view = MKAnnotationView(annotation: currentAnno, reuseIdentifier: "currentAnno")
-//                view.addSubview(self.customAnnotationView(in: mapView, for: currentAnno, isCurrent: true))
-//                return view
-//            }
-//
-//            if let annotation = annotation as? DriverAnnotation {
-//                let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "driver")
-//                let image = UIImage(named: "car-top-view")?.imageResize(sizeChange: CGSize.init(width: 40, height: 30))
-//                view.image = image
-//                return view
-//            }
-            
+            // want to show a custom image if the annotation is the user's location.
+            guard !annotation.isKind(of: MKUserLocation.self) else {
+                   let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "userLocation")
+                annotationView.image = UIImage(named: "location.icon")?.imageResize(sizeChange: CGSize.init(width: 30, height: 35))
+                   return annotationView
+                   //return nil
+               }
+                        
             return nil
+        }
+        
+        func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+            guard let userLocation = userLocation else {return}
+            mapView.cameraZoomRange = .init(minCenterCoordinateDistance: 100, maxCenterCoordinateDistance: 800)
+            mapView.setUserTrackingMode(.followWithHeading, animated: true)
+            mapView.camera.pitch = 45.0
+            mapView.camera.heading = userLocation.heading?.trueHeading ?? 90
+            
         }
         
         private func customAnnotationView(in mapView: MKMapView, for annotation: MKAnnotation, isCurrent: Bool = false) -> CustomLocationAnnotationView {
@@ -174,15 +180,7 @@ extension MapViewRepresentable {
             }
         }
         
-        func setCamera(){
-            //guard let userLocation = userLocation else {return}
-//            let userCoordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-//            let eyeCoordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.latitude)
-//            let mapCamera = MKMapCamera(lookingAtCenter: userCoordinate, fromEyeCoordinate: eyeCoordinate, eyeAltitude: 400.0)
-            parent.mapView.setUserTrackingMode(.follow, animated: true)
-            parent.mapView.cameraZoomRange = .init(maxCenterCoordinateDistance: CLLocationDistance.init(800.0))
-            //parent.mapView.setCamera(mapCamera, animated: true)
-        }
+
         
         //MARK: - Add drivers annonatations
         func clearMapView() {

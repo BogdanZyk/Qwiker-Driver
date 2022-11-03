@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-
+import MapKit
+import GeoFireUtils
 
 final class Helpers{
     
@@ -15,5 +16,10 @@ final class Helpers{
         if UIApplication.shared.canOpenURL(settingURL){
             UIApplication.shared.open(settingURL)
         }
+    }
+    
+    
+    static func getGeoHash(forLocation location: CLLocationCoordinate2D) -> String{
+        return GFUtils.geoHash(forLocation: location)
     }
 }

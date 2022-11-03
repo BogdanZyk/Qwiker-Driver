@@ -137,6 +137,11 @@ extension HomeViewModel {
             self.mapState = .tripCompleted
         }
     }
+    func deleteTrip(){
+        tripService.deleteTrip { _ in
+            self.mapState = .noInput
+        }
+    }
     
     func updateDriverActiveState(_ isActive: Bool) {
         guard let uid = Auth.auth().currentUser?.uid else { return }

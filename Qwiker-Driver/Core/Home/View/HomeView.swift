@@ -58,16 +58,37 @@ extension HomeView{
 extension HomeView{
     
     private var mainHomeButton: some View{
-        HStack{
-            if homeVM.mapState == .noInput{
-                MainHomeActionButton(showSideMenu: $showSideMenu)
-                    .padding(.leading)
-                    .animation(nil, value: UUID().uuidString)
-                Spacer()
-                ActiveToggle()
-                    .padding(.trailing)
+        VStack {
+            HStack{
+                if homeVM.mapState == .noInput{
+                    MainHomeActionButton(showSideMenu: $showSideMenu)
+                        .padding(.leading)
+                        .animation(nil, value: UUID().uuidString)
+                    Spacer()
+                    ActiveToggle()
+                        .padding(.trailing)
+                }
             }
+            focusCurrentLocationButton
         }
+    }
+    
+    private var focusCurrentLocationButton: some View{
+        Button {
+            LocationManager.shared.setUserLocationInMap()
+        } label: {
+            Image(systemName: "location.fill")
+                .imageScale(.medium)
+                .foregroundColor(.primaryBlue)
+                .padding(10)
+                .background{
+                    Circle()
+                        .fill(Color.white)
+                        .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 0)
+                }
+        }
+        .padding()
+        .hTrailing()
     }
     
     @ViewBuilder var viewForState: some View {

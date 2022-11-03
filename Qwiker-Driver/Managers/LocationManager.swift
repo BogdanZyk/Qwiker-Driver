@@ -23,7 +23,6 @@ class LocationManager: NSObject, ObservableObject{
     
     var mapView: MKMapView?
     var currentRect: MKMapRect?
-    
     private let locationManager = CLLocationManager()
     @Published var showAlert: Bool = false
     @Published var isAuthorization: Bool = false
@@ -35,7 +34,10 @@ class LocationManager: NSObject, ObservableObject{
     private override init() {
         super.init()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
+        locationManager.distanceFilter = CLLocationDistance(150)
+        locationManager.activityType = .automotiveNavigation
         requestStatus()
     }
     
@@ -78,9 +80,7 @@ class LocationManager: NSObject, ObservableObject{
     }
     
     func setUserLocationInMap(){
-        guard let userLocation = userLocation else {return}
-        let region = MKCoordinateRegion(center: userLocation.coordinate, span: SPAN)
-        mapView?.setRegion(region, animated: true)
+        mapView?.setUserTrackingMode(.followWithHeading, animated: true)
     }
     
     func setCurrentRectInMap(){
@@ -102,7 +102,8 @@ extension LocationManager: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else {return}
         userLocation = location
-        locationManager.stopUpdatingLocation()
+        print("DEBUG ->", location)
+        UserService.updateUserLocation(location: CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude))
     }
     
     
