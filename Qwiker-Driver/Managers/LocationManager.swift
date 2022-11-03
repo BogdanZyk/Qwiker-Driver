@@ -36,7 +36,7 @@ class LocationManager: NSObject, ObservableObject{
         locationManager.delegate = self
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
-        locationManager.distanceFilter = CLLocationDistance(150)
+        locationManager.distanceFilter = CLLocationDistance(100)
         locationManager.activityType = .automotiveNavigation
         requestStatus()
     }
@@ -69,12 +69,12 @@ class LocationManager: NSObject, ObservableObject{
         locationManager.startMonitoring(for: region)
     }
     
-    func createPickupRegionForTrip(_ trip: Trip) {
+    func createPickupRegionForTrip(_ trip: RequestedTrip) {
         print("DEBUG: Did create pickup region..")
         createCustomRegion(withType: .pickup, coordinates: trip.pickupLocationCoordiantes)
     }
     
-    func createDropoffRegionForTrip(_ trip: Trip) {
+    func createDropoffRegionForTrip(_ trip: RequestedTrip) {
         print("DEBUG: Did create dropoff region..")
         createCustomRegion(withType: .dropoff, coordinates: trip.dropoffLocationCoordinates)
     }
@@ -145,3 +145,7 @@ extension LocationManager: CLLocationManagerDelegate{
         }
     }
 }
+
+
+
+

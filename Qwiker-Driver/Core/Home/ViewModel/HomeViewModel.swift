@@ -19,8 +19,9 @@ import MapKit
 final class HomeViewModel: ObservableObject{
     
     @Published var user: Rider?
-    @Published var trip: Trip?
+    @Published var trip: RequestedTrip?
     @Published var mapState = MapViewState.noInput
+    @Published var userLocation: CLLocationCoordinate2D?
     private var tripService = TripService()
     private var destinationLocation: AppLocation?
     var routeToPassegers: MKRoute?
@@ -66,7 +67,7 @@ extension HomeViewModel {
     func addTripObserverForDriver() {
         tripService.addTripObserverForDriver { snapshot, error in
             guard let change = snapshot?.documentChanges.first else { return }
-            guard let trip = try? change.document.data(as: Trip.self) else { return }
+            guard let trip = try? change.document.data(as: RequestedTrip.self) else { return }
            
             switch change.type {
             case .added, .modified:

@@ -50,7 +50,7 @@
 		5A9626CC29111090002ADB48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A9626CB29111090002ADB48 /* GoogleService-Info.plist */; };
 		5A9626CE291110EF002ADB48 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626CD291110EF002ADB48 /* User.swift */; };
 		5A9626D029111110002ADB48 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626CF29111110002ADB48 /* Vehicle.swift */; };
-		5A9626D229111146002ADB48 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626D129111146002ADB48 /* Trip.swift */; };
+		5A9626D229111146002ADB48 /* RequestedTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626D129111146002ADB48 /* RequestedTrip.swift */; };
 		5A9626D42911115C002ADB48 /* AppLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626D32911115C002ADB48 /* AppLocation.swift */; };
 		5A9626D629111185002ADB48 /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626D529111185002ADB48 /* Passenger.swift */; };
 		5A9626D829111293002ADB48 /* RideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9626D729111293002ADB48 /* RideType.swift */; };
@@ -116,7 +116,7 @@
 		5A9626CB29111090002ADB48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5A9626CD291110EF002ADB48 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5A9626CF29111110002ADB48 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
-		5A9626D129111146002ADB48 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		5A9626D129111146002ADB48 /* RequestedTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedTrip.swift; sourceTree = "<group>"; };
 		5A9626D32911115C002ADB48 /* AppLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocation.swift; sourceTree = "<group>"; };
 		5A9626D529111185002ADB48 /* Passenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
 		5A9626D729111293002ADB48 /* RideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideType.swift; sourceTree = "<group>"; };
@@ -290,7 +290,7 @@
 			children = (
 				5A9626CD291110EF002ADB48 /* User.swift */,
 				5A9626CF29111110002ADB48 /* Vehicle.swift */,
-				5A9626D129111146002ADB48 /* Trip.swift */,
+				5A9626D129111146002ADB48 /* RequestedTrip.swift */,
 				5A9626D32911115C002ADB48 /* AppLocation.swift */,
 				5A9626D529111185002ADB48 /* Passenger.swift */,
 				5A9626D729111293002ADB48 /* RideType.swift */,
@@ -584,7 +584,7 @@
 				5A9626A329110B89002ADB48 /* View.swift in Sources */,
 				5A8DB5AE2912A4B2004B640E /* PickupPassengerView.swift in Sources */,
 				5A9626D029111110002ADB48 /* Vehicle.swift in Sources */,
-				5A9626D229111146002ADB48 /* Trip.swift in Sources */,
+				5A9626D229111146002ADB48 /* RequestedTrip.swift in Sources */,
 				5A9626A729110BD6002ADB48 /* UIImage.swift in Sources */,
 				5A96268329110A35002ADB48 /* ContentView.swift in Sources */,
 				5A96269929110AC7002ADB48 /* ErrorHandler.swift in Sources */,

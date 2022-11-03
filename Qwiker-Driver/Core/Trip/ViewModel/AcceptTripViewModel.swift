@@ -12,7 +12,7 @@ import MapKit
 final class AcceptTripViewModel: ObservableObject{
     
    
-    var trip: Trip?
+    var trip: RequestedTrip?
     
     @Published var dropOffTime: String = ""
 

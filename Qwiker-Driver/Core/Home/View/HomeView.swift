@@ -21,6 +21,9 @@ struct HomeView: View {
             sideMenuView
             viewForState
                 .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
+                .onReceive(LocationManager.shared.$userLocation) { location in
+                    homeVM.userLocation = location?.coordinate
+                }
         }
         .environmentObject(homeVM)
     }

@@ -30,13 +30,9 @@ struct MapViewRepresentable: UIViewRepresentable {
         switch homeViewModel.mapState {
         case .noInput, .tripCancelled:
             context.coordinator.clearMapView()
-        case .tripAccepted:
-            context.coordinator.clearMapView()
-            context.coordinator.addAnnotationAndGeneratePolylineToPassenger(isRect: false)
-        case .tripRequested:
-            context.coordinator.addAnnotationAndGeneratePolylineToPassenger(isRect: false)
+        case .tripAccepted, .tripRequested:
+            context.coordinator.addAnnotationAndGeneratePolylineToPassenger()
         case .tripInProgress:
-            context.coordinator.clearMapView()
             context.coordinator.addDestinationAnnoAndPolyline()
         default:
             break
@@ -71,6 +67,8 @@ extension MapViewRepresentable {
         let parent: MapViewRepresentable
         var userLocation: MKUserLocation?
         var didSetVisibleMapRectForTrip = false
+        var didSetVisibleMapForAccept = false
+        var didSetVisibleMapForProcess = false
         // MARK: - Lifecycle
         
         init(parent: MapViewRepresentable) {
@@ -81,8 +79,6 @@ extension MapViewRepresentable {
         // MARK: - MKMapViewDelegate
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
             self.userLocation = userLocation
-            
-            
         }
         
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -146,44 +142,57 @@ extension MapViewRepresentable {
         //for progress trip
         func addDestinationAnnoAndPolyline() {
             guard let trip = parent.homeViewModel.trip else { return }
+            parent.mapView.removeAnnotations(parent.mapView.annotations)
             addAndSelectAnnotation(withCoordinate: trip.dropoffLocationCoordinates)
-            configurePolyline(withDestinationCoordinate: trip.dropoffLocationCoordinates, withRect: false)
+            configurePolyline(withDestinationCoordinate: trip.dropoffLocationCoordinates, didSetVisible: &didSetVisibleMapForProcess)
         }
         
         //for accept trip
-        func addAnnotationAndGeneratePolylineToPassenger(isRect: Bool = true) {
+        func addAnnotationAndGeneratePolylineToPassenger() {
             guard let trip = parent.homeViewModel.trip else { return }
-            self.parent.mapView.removeAnnotations(parent.mapView.annotations)
+            parent.mapView.removeAnnotations(parent.mapView.annotations)
             addAndSelectAnnotation(withCoordinate: trip.pickupLocationCoordiantes)
-            self.configurePolyline(withDestinationCoordinate: trip.pickupLocationCoordiantes)
+            print("DEBUG", parent.mapView.annotations.count)
+            self.configurePolyline(withDestinationCoordinate: trip.pickupLocationCoordiantes, didSetVisible: &didSetVisibleMapForAccept)
         }
         
         
         func addAndSelectAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
             let anno = MKPointAnnotation()
             anno.coordinate = coordinate
-            
             self.parent.mapView.addAnnotation(anno)
-            self.parent.mapView.selectAnnotation(anno, animated: true)
         }
         
         
-        func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D, withRect: Bool = false) {
-            guard let userLocation = self.userLocation else { return }
-            MapHelpers.getDestinationRoute(from: userLocation.coordinate, to: coordinate) { route in
-                self.parent.mapView.addOverlay(route.polyline)
-                if withRect{
-                    let rect = self.parent.mapView.mapRectThatFits(route.polyline.boundingMapRect,
-                                                                   edgePadding: .init(top: 64, left: 32, bottom: 500, right: 32))
-                    self.parent.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
+        func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D, didSetVisible: inout Bool) {
+            guard let userCoordinate = userLocation?.coordinate, let newUserCoordinate = parent.homeViewModel.userLocation else {return}
+            
+            if !didSetVisible{
+                MapHelpers.getDestinationRoute(from: userCoordinate, to: coordinate) { route in
+                    print("DEBUG","add overlay")
+                    self.parent.mapView.removeOverlays(self.parent.mapView.overlays)
+                    self.parent.mapView.addOverlay(route.polyline)
+                    self.didSetVisibleMapForAccept = true
+                    print("DEBUG", userCoordinate)
+                }
+            }else if newUserCoordinate != userCoordinate{
+                MapHelpers.getDestinationRoute(from: userCoordinate, to: coordinate) { route in
+                    print("DEBUG","add overlay")
+                    self.parent.mapView.addOverlay(route.polyline)
+                    if let overlay = self.parent.mapView.overlays.first{
+                        self.parent.mapView.removeOverlay(overlay)
+                    }
+                    print("DEBUG", userCoordinate)
                 }
             }
+            
         }
-        
 
         
         //MARK: - Add drivers annonatations
         func clearMapView() {
+            didSetVisibleMapForAccept = false
+            didSetVisibleMapForProcess = false
             didSetVisibleMapRectForTrip = false
             let annotations = parent.mapView.annotations
             removeAnnotationsAndOverlays(annotations)
