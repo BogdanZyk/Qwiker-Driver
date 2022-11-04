@@ -45,18 +45,7 @@ struct MapViewRepresentable: UIViewRepresentable {
     
 }
 
-//MARK: - MapHelpers
-extension MapViewRepresentable{
-    func setCamera(){
-        guard let userLocation = locationManager.userLocation else {return}
-            let userCoordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-            let eyeCoordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.latitude)
-            let mapCamera = MKMapCamera(lookingAtCenter: userCoordinate, fromEyeCoordinate: eyeCoordinate, eyeAltitude: 400.0)
-        mapView.setUserTrackingMode(.followWithHeading, animated: true)
-        mapView.cameraZoomRange = .init(minCenterCoordinateDistance: 100, maxCenterCoordinateDistance: 800)
-        mapView.setCamera(mapCamera, animated: true)
-    }
-}
+
 
 extension MapViewRepresentable {
 
@@ -97,12 +86,10 @@ extension MapViewRepresentable {
                 return customAnnotationView
             }
             
-            // want to show a custom image if the annotation is the user's location.
             guard !annotation.isKind(of: MKUserLocation.self) else {
                    let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "userLocation")
                 annotationView.image = UIImage(named: "location.icon")?.imageResize(sizeChange: CGSize.init(width: 30, height: 35))
                    return annotationView
-                   //return nil
                }
                         
             return nil
@@ -152,8 +139,7 @@ extension MapViewRepresentable {
             guard let trip = parent.homeViewModel.trip else { return }
             parent.mapView.removeAnnotations(parent.mapView.annotations)
             addAndSelectAnnotation(withCoordinate: trip.pickupLocationCoordiantes)
-            print("DEBUG", parent.mapView.annotations.count)
-            self.configurePolyline(withDestinationCoordinate: trip.pickupLocationCoordiantes, didSetVisible: &didSetVisibleMapForAccept)
+            configurePolyline(withDestinationCoordinate: trip.pickupLocationCoordiantes, didSetVisible: &didSetVisibleMapForAccept)
         }
         
         

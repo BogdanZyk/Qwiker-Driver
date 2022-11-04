@@ -26,6 +26,10 @@ struct HomeView: View {
                 }
         }
         .environmentObject(homeVM)
+        .sheet(isPresented: $homeVM.isShowCompleteTrip, onDismiss: homeVM.deleteTrip) {
+            TripCompletedView()
+                .environmentObject(homeVM)
+        }
     }
 }
 
@@ -105,8 +109,7 @@ extension HomeView{
         case .driverArrived:
             AnyView(PickupPassengerView())
         case .tripInProgress:
-            AnyView(EmptyView())
-            //return AnyView(TripInProgressView())
+            AnyView(TripInProgressView())
         case .arrivedAtDestination:
             AnyView(EmptyView())
             //return AnyView(TripArrivalView(user: user))

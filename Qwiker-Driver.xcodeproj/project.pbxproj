@@ -75,6 +75,9 @@
 		5A96270C29117B16002ADB48 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96270B29117B16002ADB48 /* HomeView.swift */; };
 		5A9627182911845A002ADB48 /* MapHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9627162911845A002ADB48 /* MapHelpers.swift */; };
 		5A9627192911845A002ADB48 /* HelpersFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9627172911845A002ADB48 /* HelpersFunc.swift */; };
+		5ADC67352915162D0063014E /* TripInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC67342915162D0063014E /* TripInProgressView.swift */; };
+		5ADC673C291533400063014E /* TripCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC673B291533400063014E /* TripCompletedView.swift */; };
+		5ADC673E291534710063014E /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC673D291534710063014E /* Double.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +144,9 @@
 		5A96270B29117B16002ADB48 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5A9627162911845A002ADB48 /* MapHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelpers.swift; sourceTree = "<group>"; };
 		5A9627172911845A002ADB48 /* HelpersFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpersFunc.swift; sourceTree = "<group>"; };
+		5ADC67342915162D0063014E /* TripInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInProgressView.swift; sourceTree = "<group>"; };
+		5ADC673B291533400063014E /* TripCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCompletedView.swift; sourceTree = "<group>"; };
+		5ADC673D291534710063014E /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +175,8 @@
 				5A8DB59629127944004B640E /* CancelledView.swift */,
 				5A8DB5AD2912A4B2004B640E /* PickupPassengerView.swift */,
 				5A8DB5AF2912A6AD004B640E /* EnRouteToPickupLocationView.swift */,
+				5ADC67342915162D0063014E /* TripInProgressView.swift */,
+				5ADC673B291533400063014E /* TripCompletedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 				5A9626AA29110BFE002ADB48 /* UIApplication.swift */,
 				5A8DB58F2912676E004B640E /* Preview.swift */,
 				5A8DB59429126F6C004B640E /* TimeInterval.swift */,
+				5ADC673D291534710063014E /* Double.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -596,9 +605,11 @@
 				5A9626DF29111751002ADB48 /* PrimaryTextField.swift in Sources */,
 				5A8DB5AC29128678004B640E /* ActiveToggleView.swift in Sources */,
 				5A9626A529110B9F002ADB48 /* String.swift in Sources */,
+				5ADC673C291533400063014E /* TripCompletedView.swift in Sources */,
 				5A9626A929110BEA002ADB48 /* MapKit.swift in Sources */,
 				5A9626F7291130BD002ADB48 /* DriverRegistarionViewModel.swift in Sources */,
 				5A96270C29117B16002ADB48 /* HomeView.swift in Sources */,
+				5ADC67352915162D0063014E /* TripInProgressView.swift in Sources */,
 				5A8DB59529126F6C004B640E /* TimeInterval.swift in Sources */,
 				5A8DB5A029127E56004B640E /* SideMenuOptionViewType.swift in Sources */,
 				5A9626F229113091002ADB48 /* DriverRegistrationView.swift in Sources */,
@@ -628,6 +639,7 @@
 				5A8DB5A829128019004B640E /* MainActionButton.swift in Sources */,
 				5A9626F929113355002ADB48 /* CustomProgressView.swift in Sources */,
 				5A96270A29117789002ADB48 /* MapViewRepresentable.swift in Sources */,
+				5ADC673E291534710063014E /* Double.swift in Sources */,
 				5A9626DD29111720002ADB48 /* PrimaryButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,7 +29,7 @@ struct LocationCellView: View {
                     .font(.poppinsMedium(size: 12))
                 Text(title)
                     .lineLimit(1)
-                    .font(.poppinsMedium(size: 20))
+                    .font(.poppinsMedium(size: 18))
             }
         }
     }

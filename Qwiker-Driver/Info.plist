@@ -16,8 +16,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Medel.ttf</string>
-		<string></string>
-		<string></string>
+		<string>Poppins-Medium.ttf</string>
+		<string>Poppins-Regular.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

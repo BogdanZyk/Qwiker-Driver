@@ -22,6 +22,7 @@ final class HomeViewModel: ObservableObject{
     @Published var trip: RequestedTrip?
     @Published var mapState = MapViewState.noInput
     @Published var userLocation: CLLocationCoordinate2D?
+    @Published var isShowCompleteTrip: Bool = false
     private var tripService = TripService()
     private var destinationLocation: AppLocation?
     var routeToPassegers: MKRoute?
@@ -46,6 +47,13 @@ final class HomeViewModel: ObservableObject{
         }
     }
     
+    func reset(){
+        self.mapState = .noInput
+        trip = nil
+        destinationLocation = nil
+        routeToPassegers = nil
+        roteToPicaupLocation = nil
+    }
 }
     
 
@@ -84,7 +92,8 @@ extension HomeViewModel {
                 case .cancelled:
                     self.mapState = .tripCancelled
                 case .complete:
-                    break
+                    self.isShowCompleteTrip.toggle()
+                    self.saveCompletedTrip()
                 case .inProgress:
                     self.mapState = .tripInProgress
                 case .accepted:
@@ -122,7 +131,7 @@ extension HomeViewModel {
     }
     
     func updateTripStateToDropoff() {
-        tripService.didArriveAtPickupLocation { _ in
+        tripService.didArriveAtDropffLocation{ _ in
             self.mapState = .arrivedAtDestination
         }
     }
@@ -134,15 +143,16 @@ extension HomeViewModel {
     }
     
     func dropOffPassenger() {
-        tripService.dropoffPassenger { _ in
-            self.mapState = .tripCompleted
-        }
+        tripService.dropoffPassenger { _ in}
     }
+    
     func deleteTrip(){
         tripService.deleteTrip { _ in
-            self.mapState = .noInput
+            self.reset()
         }
     }
+    
+    
     
     func updateDriverActiveState(_ isActive: Bool) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -155,5 +165,13 @@ extension HomeViewModel {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let geoPoint = GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
         FbConstant.COLLECTION_DRIVERS.document(uid).updateData(["coordinates": geoPoint])
+    }
+    
+    func saveCompletedTrip() {
+        guard let trip = trip else { return }
+        guard let encodedTrip = try? Firestore.Encoder().encode(trip) else { return }
+        FbConstant.COLLECTIONS_USER_TRIPS
+            .document(trip.tripId)
+            .setData(encodedTrip) { _ in}
     }
 }

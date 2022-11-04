@@ -9,16 +9,6 @@ import MapKit
 
 final class MapHelpers{
     
-
-//    static func ridePriceAndDestinceForType(_ type: RideType, currentLocation: AppLocation?, destinationLocation: AppLocation?) -> (price: String, tripDistanceInMeters: Double)  {
-//        guard let currentLocation = currentLocation, let destinationLocation = destinationLocation else { return ("0.0", 0.0) }
-//        let location = CLLocation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
-//        let tripDistanceInMeters = location.distance(from: CLLocation(latitude: destinationLocation.coordinate.latitude, longitude: destinationLocation.coordinate.longitude))
-//
-//        let price = type.price(for: tripDistanceInMeters).formatted(.currency(code: "USD"))
-//
-//        return (price, tripDistanceInMeters)
-//    }
     
     static func getDestinationRoute(from userLocation: CLLocationCoordinate2D,
                                     to destinationCoordinate: CLLocationCoordinate2D,
