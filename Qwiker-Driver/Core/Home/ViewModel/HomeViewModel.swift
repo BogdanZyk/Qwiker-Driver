@@ -76,35 +76,37 @@ extension HomeViewModel {
         tripService.addTripObserverForDriver { snapshot, error in
             guard let change = snapshot?.documentChanges.first else { return }
             guard let trip = try? change.document.data(as: RequestedTrip.self) else { return }
-           
+            guard self.mapState != .tripRequested else { return }
+            
             switch change.type {
             case .added, .modified:
-                
-                guard self.mapState != .tripRequested else {return }
                 self.trip = trip
                 self.tripService.trip = trip
                 print("DEBUG", trip.tripState)
-                
-                switch trip.tripState{
-            
-                case .requested:
-                    self.mapState = .tripRequested
-                case .cancelled:
-                    self.mapState = .tripCancelled
-                case .complete:
-                    self.isShowCompleteTrip.toggle()
-                    self.saveCompletedTrip()
-                case .inProgress:
-                    self.mapState = .tripInProgress
-                case .accepted:
-                    self.mapState = .tripAccepted
-                default:
-                    break
+                withAnimation {
+                    self.updateViewforState(trip.tripState)
                 }
-            
             case .removed:
                 self.mapState = .noInput
             }
+        }
+    }
+    
+    private func updateViewforState(_ tripState: TripState){
+        switch tripState{
+        case .requested:
+            self.mapState = .tripRequested
+        case .cancelled:
+            self.mapState = .tripCancelled
+        case .complete:
+            self.isShowCompleteTrip.toggle()
+            self.saveCompletedTrip()
+        case .inProgress:
+            self.mapState = .tripInProgress
+        case .accepted:
+            self.mapState = .tripAccepted
+        default:
+            break
         }
     }
     
