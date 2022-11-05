@@ -55,7 +55,7 @@ final class DriverRegistarionViewModel: ObservableObject{
         ImageUploader.uploadImage(withImage: image) { [weak self] url in
             guard let self = self else {return}
             let hash = Helpers.getGeoHash(forLocation: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
-            let user: Rider = .init(fullname: self.fullName, email: self.email, phoneNumber: self.phone, profileImageUrl: url, coordinates: GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), geohash: hash, vehicle: self.vehicle, isActive: false)
+            let user: Rider = .init(fullname: self.fullName, email: self.email, phoneNumber: self.phone, profileImageUrl: url, coordinates: GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), course: location.course, geohash: hash, vehicle: self.vehicle, isActive: false)
             UserService.uploadRiderData(withUid: userSession.uid, user: user) { error in
                 self.showLoader = false
                 if let error = error {

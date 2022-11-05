@@ -66,10 +66,10 @@ final class AuthenticationViewModel: ObservableObject {
         let number = phoneNumber.formattingPhone()
         Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         checkIsAlredyAuthUser(number: number) { isNotAlredyExist in
+            self.isShowLoader = false
             if isNotAlredyExist{
                 PhoneAuthProvider.provider().verifyPhoneNumber(number, uiDelegate: nil) {[weak self] result, error in
                     guard let self = self else {return}
-                    self.isShowLoader = false
                     if let error = error{
                         self.error = error
                         return

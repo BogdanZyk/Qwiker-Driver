@@ -14,14 +14,14 @@ struct UserService {
     
     
     
-    static func updateUserLocation(location: CLLocationCoordinate2D){
+    static func updateUserLocation(location: CLLocationCoordinate2D, course: Double = 0.0){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let hash = Helpers.getGeoHash(forLocation: location)
         let geoPoint = GeoPoint(latitude: location.latitude,
                                 longitude: location.longitude)
         
         FbConstant.COLLECTION_DRIVERS.document(uid).updateData(
-            ["geohash" : hash, "coordinates" : geoPoint])
+            ["geohash" : hash, "coordinates" : geoPoint, "course" : course])
         { error in
             if let error = error{
                 print("DEBUG UPDATE USER LOCATION", error.localizedDescription)
@@ -65,7 +65,7 @@ struct UserService {
             email: email,
             phoneNumber: phone,
             coordinates: GeoPoint(latitude: userLocation.coordinate.latitude,
-                                  longitude: userLocation.coordinate.longitude), isActive: false)
+                                  longitude: userLocation.coordinate.longitude), course: -1, isActive: false)
         return user
     }
     

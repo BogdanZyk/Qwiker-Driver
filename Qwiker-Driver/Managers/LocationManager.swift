@@ -103,7 +103,7 @@ extension LocationManager: CLLocationManagerDelegate{
         guard let location = locations.first else {return}
         userLocation = location
         print("DEBUG ->", location)
-        UserService.updateUserLocation(location: CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude))
+        UserService.updateUserLocation(location: CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude), course: location.course)
     }
     
     

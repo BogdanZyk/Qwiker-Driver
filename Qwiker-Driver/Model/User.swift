@@ -20,6 +20,7 @@ struct Rider: Codable {
     var phoneNumber: String
     var profileImageUrl: String?
     var coordinates: GeoPoint
+    var course: Double
     var geohash: String?
     var vehicle: Vehicle?
     var isActive: Bool
