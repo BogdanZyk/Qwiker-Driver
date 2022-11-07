@@ -47,10 +47,10 @@ final class HomeViewModel: ObservableObject{
     }
     
     func reset(){
-        self.mapState = .noInput
         trip = nil
         destinationLocation = nil
         currentRoute = nil
+        self.mapState = .noInput
     }
 }
     

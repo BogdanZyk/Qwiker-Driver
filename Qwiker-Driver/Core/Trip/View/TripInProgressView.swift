@@ -8,13 +8,28 @@
 import SwiftUI
 
 struct TripInProgressView: View {
+    @State private var tripTime: Date = Date()
     @EnvironmentObject var homeVM: HomeViewModel
     var body: some View {
-        BottomSheetView(spacing: 10, maxHeightForBounds: 6) {
-            locationView
-            Divider()
-            detailsButon
-            Spacer()
+        
+        ZStack(alignment: .bottom) {
+            ExpandedView(minHeight: getRect().height / 6, maxHeight: getRect().height / 1.3) { minHeight, rect, offset in
+                BottomSheetView(spacing: 15, maxHeightForBounds: 1, isDragIcon: true) {
+                    timerHeader
+                    Group{
+                        Divider().padding(.horizontal, -16)
+                        destinationLocation
+                        CustomDivider(verticalPadding: 0, lineHeight: 10).padding(.horizontal, -16)
+                        paymentMethod
+                        Divider()
+                        tripTotal
+                        Divider().padding(.horizontal, -16)
+                        bottomActionButtons
+                    }
+                    .opacity(offset.wrappedValue > -10 ? 0 : 1)
+                    Spacer()
+                }
+            }
             arrivedButton
         }
     }
@@ -32,12 +47,22 @@ struct TripInProgressView_Previews: PreviewProvider {
 
 
 extension TripInProgressView{
-   private var title: some View{
-        Text("On the way")
-            .font(.poppinsMedium(size: 20))
+    private var timerHeader: some View{
+        HStack(spacing: 15) {
+            Image(systemName: "location.square.fill")
+                .imageScale(.large)
+                .foregroundColor(.gray)
+            VStack(alignment: .leading, spacing: 0) {
+                CountDownTimerView(timerType: .inProgressTrip, referenceDate: $tripTime)
+                Text("Trip in progress")
+                    .foregroundColor(.gray)
+                    .font(.poppinsMedium(size: 14))
+            }
+               Spacer()
+        }
     }
     
-    private var locationView: some View{
+    private var destinationLocation: some View{
         Group{
             if let trip = homeVM.trip{
                 LocationCellView(isDestination: true, title: trip.dropoffLocationName)
@@ -46,18 +71,41 @@ extension TripInProgressView{
         }
     }
     
-    private var detailsButon: some View{
-        HStack {
-            Text("Details")
-            Spacer()
-            Image(systemName: "chevron.right")
-        }
-        .font(.poppinsMedium(size: 16))
-    }
+   
     
     private var arrivedButton: some View{
         PrimaryButtonView(showLoader: false, title: "Arrived", font: .title3.bold()) {
             homeVM.dropOffPassenger()
         }
+        .padding(.horizontal)
+    }
+    
+    private var tripTotal: some View{
+        HStack{
+            Text("Trip coast")
+                .font(.poppinsRegular(size: 18))
+            Spacer()
+            Text(homeVM.trip?.tripCost.formatted(.currency(code: "USD")) ?? "")
+                .font(.title3.bold())
+        }
+    }
+    private var paymentMethod: some View{
+        Text("Non-cash payment")
+            .font(.poppinsMedium(size: 18))
+            .hLeading()
+    }
+    
+    private var bottomActionButtons: some View{
+        HStack{
+            Spacer()
+            CircleButtonWithTitle(title: "Conflict", imageName: "bolt.shield", action: {})
+            
+            Spacer()
+            CircleButtonWithTitle(title: "Support", imageName: "questionmark.circle", action: {
+                //cancel trip
+            })
+            Spacer()
+        }
+        .padding(.top)
     }
 }

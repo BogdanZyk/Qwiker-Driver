@@ -16,8 +16,7 @@ struct EnRouteToPickupLocationView: View {
         ZStack(alignment: .bottom) {
             ExpandedView(minHeight: getRect().height / 6, maxHeight: getRect().height / 1.3) { minHeight, rect, offset in
                 
-                BottomSheetView(spacing: 15, maxHeightForBounds: 1) {
-                    dragIcon
+                BottomSheetView(spacing: 15, maxHeightForBounds: 1, isDragIcon: true) {
                     timerSection
                     Group{
                         Divider().padding(.horizontal, -16)
@@ -79,7 +78,7 @@ extension EnRouteToPickupLocationView{
                 .imageScale(.large)
                 .foregroundColor(.gray)
             VStack(alignment: .leading, spacing: 0){
-                CountDownTimerView(referenceDate: $expectedTravelTime)
+                CountDownTimerView(timerType: .enRouteToPicup, referenceDate: $expectedTravelTime)
                 Text("Time before pick-up")
                     .font(.poppinsMedium(size: 14))
                     .foregroundColor(.gray)
@@ -87,13 +86,6 @@ extension EnRouteToPickupLocationView{
             }
             Spacer()
         }
-    }
-    private var dragIcon: some View{
-        Capsule()
-            .fill(Color.secondary.opacity(0.3))
-            .frame(width: 50, height: 6)
-            .padding(.top, 5)
-            .padding(.vertical, -15)
     }
 
 
