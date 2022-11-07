@@ -169,10 +169,11 @@ extension HomeViewModel {
     }
     
     func saveCompletedTrip() {
-        guard let trip = trip else { return }
-        guard let encodedTrip = try? Firestore.Encoder().encode(trip) else { return }
+        guard let requestedTrip = trip else { return }
+        let savedTrip = SavedTrip(requestedTrip: requestedTrip)
+        guard let encodedTrip = try? Firestore.Encoder().encode(savedTrip) else { return }
         FbConstant.COLLECTIONS_USER_TRIPS
-            .document(trip.tripId)
+            .document(savedTrip.tripId)
             .setData(encodedTrip) { _ in}
     }
 }

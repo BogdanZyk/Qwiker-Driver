@@ -10,24 +10,32 @@ import SwiftUI
 import SwiftUI
 
 struct SideMenuView: View {
-    
-    @Binding var isShowing: Bool
+    @Environment(\.dismiss) var dismiss
+    @State private var largeHeader: Bool = true
     @State private var showDriverRegistrationView = false
     @EnvironmentObject var authViewModel: AuthenticationViewModel
-    @EnvironmentObject var viewModel: HomeViewModel
+    @EnvironmentObject var homeVM: HomeViewModel
     @State private var navigationTipe: SideMenuOptionViewType?
-    init(isShowing: Binding<Bool>) {
-        self._isShowing = isShowing
-    }
     var body: some View {
         VStack(spacing: 0) {
             headerView
-            menuOptionsButtons
-            navigationLinks
-            Spacer()
-           
+            ScrollView(.vertical, showsIndicators: false) {
+                driverRetingSectionView
+                daylyTotalView
+                listOptionsView
+                .background(
+                    GeometryReader { geometryProxy -> Color in
+                        DispatchQueue.main.async{
+                            withAnimation {
+                                largeHeader = geometryProxy.frame(in: .named("HEADER")).minY >= -10
+                            }
+                        }
+                        return Color.clear
+                    })
+            }
+            .coordinateSpace(name: "HEADER")
         }
-        .padding()
+        
         .background(Color.primaryBg)
         .navigationBarHidden(true)
     }
@@ -36,7 +44,7 @@ struct SideMenuView: View {
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SideMenuView(isShowing: .constant(true))
+            SideMenuView()
                 .environmentObject(dev.homeViewModel)
                 .environmentObject(AuthenticationViewModel())
         }
@@ -48,46 +56,82 @@ struct SideMenuView_Previews: PreviewProvider {
 extension SideMenuView{
     private var headerView: some View{
         VStack(alignment: .leading, spacing: 20) {
-            if let user = viewModel.user{
-                HStack(alignment: .top){
-                    UserAvatarViewComponent(pathImage: user.profileImageUrl)
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(user.fullname)
-                            .font(.system(size: 18, weight: .semibold))
-                        Text(user.phoneNumber)
-                            .font(.system(size: 16))
+            HStack(alignment: .top){
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.title3.weight(.medium))
+                }
+                Spacer()
+                VStack(spacing: 5) {
+                    UserAvatarViewComponent(pathImage: homeVM.user?.profileImageUrl, size: .init(width: largeHeader ? 70 : 50, height: largeHeader ? 70 : 50))
+                    if largeHeader{
+                        Text("user name")
+                            .font(.poppinsMedium(size: 18))
+                            .transition(.opacity)
                     }
+                        
+                }.padding(.top, -20)
+                Spacer()
+                NavigationLink {
+                    Text("SETTINGS")
+                } label: {
+                    Image(systemName: "gear")
+                        .font(.title3.weight(.medium))
                 }
             }
+            
         }
-        .hLeading()
+        .padding()
+        .foregroundColor(.black)
+        .background(Color.primaryBg.ignoresSafeArea().shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 0))
     }
 
     
-    private var passengerMakeMoneyBtn: some View{
-        Button {
-            showDriverRegistrationView.toggle()
-        } label: {
-            HStack {
-                Image(systemName: "dollarsign.square")
-                    .font(.title2)
-                    .imageScale(.medium)
-                
-                Text("Make Money Driving" )
-                    .font(.system(size: 16, weight: .semibold))
-                    .padding(6)
-            }
-            .foregroundColor(Color.black)
+    private var driverRetingSectionView: some View{
+        HStack{
+            infoSectionViewCell(title: "Activity", value: "83")
+            infoSectionViewCell(title: "Rating", value: "4.989")
+        }
+        .padding(.vertical)
+    }
+    
+    private func infoSectionViewCell(title: String, value: String) -> some View{
+        VStack(spacing: 5){
+            Text(title)
+                .font(.poppinsMedium(size: 18))
+            Text(value)
+                .font(.poppinsRegular(size: 16))
+        }
+        .padding()
+        .frame(width: 150)
+        .background{
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.gray.opacity(0.2))
+                .shadow(color: .black.opacity(0.1), radius: 1, x: 0, y: 0)
         }
     }
     
+}
 
+
+//MARK: - Dayly total section
+extension SideMenuView{
+    private var daylyTotalView: some View{
+        VStack(spacing: 10) {
+            Text("Today \(Date().formatted(date: .abbreviated, time: .omitted))")
+                .font(.poppinsMedium(size: 20))
+            Text("0.0$")
+                .font(.title.bold())
+        }
+    }
 }
 
 
 // MARK: List side menu section
 extension SideMenuView{
-    private var menuOptionsButtons: some View{
+    private var listOptionsView: some View{
         VStack(alignment: .leading){
             ForEach(SideMenuOptionViewType.allCases, id: \.self) { option in
                 Button {
@@ -112,8 +156,6 @@ extension SideMenuView{
                 Text("Wallet")
             case .trips:
                 Text("MyTripsView")
-            case .settings:
-                Text("Settings")
             case .support:
                 Text("Support")
             default:

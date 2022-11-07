@@ -11,27 +11,30 @@ struct HomeView: View {
     @State private var showDriverActivateSheet: Bool = false
     @State private var showSideMenu: Bool = false
     @EnvironmentObject var authViewModel: AuthenticationViewModel
-    @StateObject var homeVM = HomeViewModel()
+    @StateObject private var orderVM = OrderViewModel()
+    @StateObject private var homeVM = HomeViewModel()
     var body: some View {
-        ZStack(alignment: .bottom) {
-            ZStack(alignment: .top){
-                MapViewRepresentable()
-                    .ignoresSafeArea()
-                mainHomeButton
-            }
-            activateOrderButton
-            sideMenuView
-            driverActivateView
-            viewForState
-                .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
-                .onReceive(LocationManager.shared.$userLocation) { location in
-                    homeVM.userLocation = location?.coordinate
+        NavigationView{
+            ZStack(alignment: .bottom) {
+                ZStack(alignment: .top){
+                    MapViewRepresentable()
+                        .ignoresSafeArea()
+                    mainHomeButton
                 }
-        }
-        .environmentObject(homeVM)
-        .sheet(isPresented: $homeVM.isShowCompleteTrip, onDismiss: homeVM.deleteTrip) {
-            TripCompletedView()
-                .environmentObject(homeVM)
+                activateOrderButton
+                driverActivateView
+                viewForState
+                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
+                    .onReceive(LocationManager.shared.$userLocation) { location in
+                        homeVM.userLocation = location?.coordinate
+                    }
+            }
+            .navigationBarHidden(true)
+            .environmentObject(homeVM)
+            .sheet(isPresented: $homeVM.isShowCompleteTrip, onDismiss: homeVM.deleteTrip) {
+                TripCompletedView()
+                    .environmentObject(homeVM)
+            }
         }
     }
 }
@@ -44,27 +47,6 @@ struct HomeView_Previews: PreviewProvider {
 }
 
 
-//MARK: - Side Menu
-
-extension HomeView{
-    private var sideMenuView: some View{
-        Group{
-            if showSideMenu {
-                Color.gray.opacity(0.5).ignoresSafeArea()
-                    .onTapGesture {
-                        withAnimation(.spring()){
-                            showSideMenu.toggle()
-                        }
-                    }
-            }
-            SideMenuView(isShowing: $showSideMenu)
-                .frame(width: getRect().width - 50, alignment: .leading)
-                .hLeading()
-                .offset(x: showSideMenu ? 0 : -getRect().width)
-        }
-    }
-}
-
 extension HomeView{
     
     private var mainHomeButton: some View{
@@ -73,8 +55,14 @@ extension HomeView{
                 if homeVM.mapState == .noInput{
                     DriverStatusButtonView(showDriverActivateSheet: $showDriverActivateSheet)
                     Spacer()
-                    DriverAvatarActionButtonView(showSideMenu: $showSideMenu)
-                        .animation(nil, value: UUID().uuidString)
+                    NavigationLink {
+                        SideMenuView()
+                            .environmentObject(homeVM)
+                    } label: {
+                        DriverAvatarActionButtonView()
+                            .environmentObject(orderVM)
+                    }
+                    
                 }
             }
             .padding(.horizontal)
@@ -134,3 +122,6 @@ extension HomeView{
         }
     }
 }
+
+
+

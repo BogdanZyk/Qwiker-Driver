@@ -83,6 +83,9 @@
 		5AA6B4A3291933CE006D0D94 /* DriverStatusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4A2291933CE006D0D94 /* DriverStatusButtonView.swift */; };
 		5AA6B4A529193927006D0D94 /* DriverActiveSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4A429193927006D0D94 /* DriverActiveSheetView.swift */; };
 		5AA6B4A729194270006D0D94 /* DriverActivateButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4A629194270006D0D94 /* DriverActivateButtonView.swift */; };
+		5AA6B4A9291945AD006D0D94 /* SavedTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4A8291945AD006D0D94 /* SavedTrip.swift */; };
+		5AA6B4AE291949E3006D0D94 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4AD291949E3006D0D94 /* OrderViewModel.swift */; };
+		5AA6B4B129194A19006D0D94 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4B029194A19006D0D94 /* Order.swift */; };
 		5ADC67352915162D0063014E /* TripInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC67342915162D0063014E /* TripInProgressView.swift */; };
 		5ADC673C291533400063014E /* TripCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC673B291533400063014E /* TripCompletedView.swift */; };
 		5ADC673E291534710063014E /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC673D291534710063014E /* Double.swift */; };
@@ -160,6 +163,9 @@
 		5AA6B4A2291933CE006D0D94 /* DriverStatusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverStatusButtonView.swift; sourceTree = "<group>"; };
 		5AA6B4A429193927006D0D94 /* DriverActiveSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverActiveSheetView.swift; sourceTree = "<group>"; };
 		5AA6B4A629194270006D0D94 /* DriverActivateButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverActivateButtonView.swift; sourceTree = "<group>"; };
+		5AA6B4A8291945AD006D0D94 /* SavedTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTrip.swift; sourceTree = "<group>"; };
+		5AA6B4AD291949E3006D0D94 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		5AA6B4B029194A19006D0D94 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		5ADC67342915162D0063014E /* TripInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInProgressView.swift; sourceTree = "<group>"; };
 		5ADC673B291533400063014E /* TripCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCompletedView.swift; sourceTree = "<group>"; };
 		5ADC673D291534710063014E /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -306,6 +312,7 @@
 				5A9626EB29112278002ADB48 /* UserService.swift */,
 				5A9626FD29114DA4002ADB48 /* ImageUploader.swift */,
 				5A96270729117269002ADB48 /* TripService.swift */,
+				5AA6B4B029194A19006D0D94 /* Order.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -320,6 +327,7 @@
 				5A9626D529111185002ADB48 /* Passenger.swift */,
 				5A9626D729111293002ADB48 /* RideType.swift */,
 				5A96270529117231002ADB48 /* MapViewState.swift */,
+				5AA6B4A8291945AD006D0D94 /* SavedTrip.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -354,6 +362,7 @@
 		5A96269429110A73002ADB48 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5AA6B4AA291949C7006D0D94 /* Orders */,
 				5A8DB59829127DF3004B640E /* SideMenu */,
 				5A96270D29117C68002ADB48 /* Trip */,
 				5A9627002911719B002ADB48 /* Map */,
@@ -527,6 +536,30 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		5AA6B4AA291949C7006D0D94 /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				5AA6B4AC291949D4006D0D94 /* View */,
+				5AA6B4AB291949CE006D0D94 /* ViewModel */,
+			);
+			path = Orders;
+			sourceTree = "<group>";
+		};
+		5AA6B4AB291949CE006D0D94 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5AA6B4AD291949E3006D0D94 /* OrderViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5AA6B4AC291949D4006D0D94 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -674,13 +707,16 @@
 				5A9626D42911115C002ADB48 /* AppLocation.swift in Sources */,
 				5A8DB59729127944004B640E /* CancelledView.swift in Sources */,
 				5A96269729110AAD002ADB48 /* FontExt.swift in Sources */,
+				5AA6B4A9291945AD006D0D94 /* SavedTrip.swift in Sources */,
 				5A9626F929113355002ADB48 /* CustomProgressView.swift in Sources */,
 				5A96270A29117789002ADB48 /* MapViewRepresentable.swift in Sources */,
 				5AA6B4A3291933CE006D0D94 /* DriverStatusButtonView.swift in Sources */,
 				5ADC673E291534710063014E /* Double.swift in Sources */,
 				5AA6B4A529193927006D0D94 /* DriverActiveSheetView.swift in Sources */,
 				5A9626DD29111720002ADB48 /* PrimaryButtonView.swift in Sources */,
+				5AA6B4B129194A19006D0D94 /* Order.swift in Sources */,
 				5AA6B49E29192958006D0D94 /* TripStatusSliderView.swift in Sources */,
+				5AA6B4AE291949E3006D0D94 /* OrderViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

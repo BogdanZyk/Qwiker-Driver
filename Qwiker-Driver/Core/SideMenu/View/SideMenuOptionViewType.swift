@@ -10,15 +10,22 @@ import Foundation
 enum SideMenuOptionViewType: Int, CaseIterable {
     case trips
     case wallet
-    case settings
+    case photocontrol
+    case promocodes
+    case message
+    case share
     case support
+    
     
     var title: String {
         switch self {
-        case .trips: return "Your Trips"
-        case .wallet: return "Wallet"
-        case .settings: return "Settings"
+        case .trips: return "Orders"
+        case .wallet: return "Ballance"
         case .support: return "Support"
+        case .promocodes: return "Promocodes"
+        case .share: return "Invite friends"
+        case .photocontrol: return "Photocontrol"
+        case .message: return "Message"
         }
     }
     
@@ -26,8 +33,11 @@ enum SideMenuOptionViewType: Int, CaseIterable {
         switch self {
         case .trips: return "list.bullet.rectangle"
         case .wallet: return "creditcard"
-        case .settings: return "gear"
         case .support: return "bubble.left"
+        case .promocodes: return ""
+        case .share: return ""
+        case .photocontrol: return ""
+        case .message: return ""
         }
     }
 }
