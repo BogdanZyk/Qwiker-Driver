@@ -78,6 +78,8 @@
 		5AA6B4942918F76C006D0D94 /* ExpandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4932918F76C006D0D94 /* ExpandView.swift */; };
 		5AA6B4982919009E006D0D94 /* CountDownTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4972919009E006D0D94 /* CountDownTimerView.swift */; };
 		5AA6B49A29190970006D0D94 /* CircleButtonWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B49929190970006D0D94 /* CircleButtonWithTitle.swift */; };
+		5AA6B49C29192447006D0D94 /* SlideToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B49B29192447006D0D94 /* SlideToAction.swift */; };
+		5AA6B49E29192958006D0D94 /* TripStatusSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B49D29192958006D0D94 /* TripStatusSliderView.swift */; };
 		5ADC67352915162D0063014E /* TripInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC67342915162D0063014E /* TripInProgressView.swift */; };
 		5ADC673C291533400063014E /* TripCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC673B291533400063014E /* TripCompletedView.swift */; };
 		5ADC673E291534710063014E /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC673D291534710063014E /* Double.swift */; };
@@ -150,6 +152,8 @@
 		5AA6B4932918F76C006D0D94 /* ExpandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandView.swift; sourceTree = "<group>"; };
 		5AA6B4972919009E006D0D94 /* CountDownTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimerView.swift; sourceTree = "<group>"; };
 		5AA6B49929190970006D0D94 /* CircleButtonWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonWithTitle.swift; sourceTree = "<group>"; };
+		5AA6B49B29192447006D0D94 /* SlideToAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideToAction.swift; sourceTree = "<group>"; };
+		5AA6B49D29192958006D0D94 /* TripStatusSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStatusSliderView.swift; sourceTree = "<group>"; };
 		5ADC67342915162D0063014E /* TripInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInProgressView.swift; sourceTree = "<group>"; };
 		5ADC673B291533400063014E /* TripCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCompletedView.swift; sourceTree = "<group>"; };
 		5ADC673D291534710063014E /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 			children = (
 				5A8DB5B22912A9C2004B640E /* LocationRowsViewComponent.swift */,
 				5A8DB5B42912AB65004B640E /* LocationCellView.swift */,
+				5AA6B49D29192958006D0D94 /* TripStatusSliderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				5AA6B4932918F76C006D0D94 /* ExpandView.swift */,
 				5AA6B4972919009E006D0D94 /* CountDownTimerView.swift */,
 				5AA6B49929190970006D0D94 /* CircleButtonWithTitle.swift */,
+				5AA6B49B29192447006D0D94 /* SlideToAction.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -628,6 +634,7 @@
 				5A8DB5B32912A9C2004B640E /* LocationRowsViewComponent.swift in Sources */,
 				5A9626FC291149C7002ADB48 /* ImagePicker.swift in Sources */,
 				5A9626FE29114DA4002ADB48 /* ImageUploader.swift in Sources */,
+				5AA6B49C29192447006D0D94 /* SlideToAction.swift in Sources */,
 				5A8DB5B52912AB65004B640E /* LocationCellView.swift in Sources */,
 				5A9626A129110B74002ADB48 /* Color.swift in Sources */,
 				5A8DB58E29125E8B004B640E /* AcceptTripView.swift in Sources */,
@@ -653,6 +660,7 @@
 				5A96270A29117789002ADB48 /* MapViewRepresentable.swift in Sources */,
 				5ADC673E291534710063014E /* Double.swift in Sources */,
 				5A9626DD29111720002ADB48 /* PrimaryButtonView.swift in Sources */,
+				5AA6B49E29192958006D0D94 /* TripStatusSliderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

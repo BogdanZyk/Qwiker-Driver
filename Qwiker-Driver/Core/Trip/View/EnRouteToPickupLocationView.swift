@@ -14,7 +14,7 @@ struct EnRouteToPickupLocationView: View {
     var body: some View {
         
         ZStack(alignment: .bottom) {
-            ExpandedView(minHeight: getRect().height / 6, maxHeight: getRect().height / 1.3) { minHeight, rect, offset in
+            ExpandedView(minHeight: getRect().height / 5.5, maxHeight: getRect().height / 1.3) { minHeight, rect, offset in
                 
                 BottomSheetView(spacing: 15, maxHeightForBounds: 1, isDragIcon: true) {
                     timerSection
@@ -30,8 +30,7 @@ struct EnRouteToPickupLocationView: View {
                     Spacer()
                 }
             }
-            pickUpButton
-                
+            arrivedSlider
         }
         .onReceive(LocationManager.shared.$didEnterPickupRegion, perform: { didEnterPickupRegion in
             isActiveBtn = didEnterPickupRegion
@@ -63,9 +62,8 @@ extension EnRouteToPickupLocationView{
         }
     }
     
-    private var pickUpButton: some View{
-
-        PrimaryButtonView(showLoader: false, title: "Arrived", font: .title3.bold()) {
+    private var arrivedSlider: some View{
+        TripStatusSliderView(title: "Arrived") {
             homeVM.updateTripStateToArrived()
         }.padding(.horizontal)
         //            .opacity(isActiveBtn ? 1 : 0.5)

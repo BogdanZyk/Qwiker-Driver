@@ -12,7 +12,7 @@ struct PickupPassengerView: View {
     @EnvironmentObject var homeVM: HomeViewModel
     var body: some View {
         ZStack(alignment: .bottom) {
-            ExpandedView(minHeight: getRect().height / 6, maxHeight: getRect().height / 1.3) { minHeight, rect, offset in
+            ExpandedView(minHeight: getRect().height / 5.5, maxHeight: getRect().height / 1.3) { minHeight, rect, offset in
                 BottomSheetView(spacing: 15, maxHeightForBounds: 1, isDragIcon: true) {
                     timerHeader
                     Group{
@@ -29,7 +29,7 @@ struct PickupPassengerView: View {
                     Spacer()
                 }
             }
-            pickupButton
+            pickupSlider
         }
     }
 }
@@ -59,8 +59,8 @@ extension PickupPassengerView{
             .hLeading()
     }
     
-    private var pickupButton: some View{
-        PrimaryButtonView(title: "PICK UP", font: .title3.bold()){
+    private var pickupSlider: some View{
+        TripStatusSliderView(title: "Pick up passengers") {
             homeVM.pickupPassenger()
         }
         .padding(.horizontal)

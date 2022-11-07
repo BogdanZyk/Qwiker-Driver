@@ -13,7 +13,7 @@ struct TripInProgressView: View {
     var body: some View {
         
         ZStack(alignment: .bottom) {
-            ExpandedView(minHeight: getRect().height / 6, maxHeight: getRect().height / 1.3) { minHeight, rect, offset in
+            ExpandedView(minHeight: getRect().height / 5.5, maxHeight: getRect().height / 1.3) { minHeight, rect, offset in
                 BottomSheetView(spacing: 15, maxHeightForBounds: 1, isDragIcon: true) {
                     timerHeader
                     Group{
@@ -30,7 +30,7 @@ struct TripInProgressView: View {
                     Spacer()
                 }
             }
-            arrivedButton
+            arrivedSlider
         }
     }
 }
@@ -73,11 +73,10 @@ extension TripInProgressView{
     
    
     
-    private var arrivedButton: some View{
-        PrimaryButtonView(showLoader: false, title: "Arrived", font: .title3.bold()) {
+    private var arrivedSlider: some View{
+        TripStatusSliderView(title: "Arrived") {
             homeVM.dropOffPassenger()
-        }
-        .padding(.horizontal)
+        }.padding(.horizontal)
     }
     
     private var tripTotal: some View{
