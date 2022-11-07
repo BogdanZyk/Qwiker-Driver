@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var showDriverActivateSheet: Bool = false
     @State private var showSideMenu: Bool = false
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @StateObject var homeVM = HomeViewModel()
@@ -19,6 +20,7 @@ struct HomeView: View {
                 mainHomeButton
             }
             sideMenuView
+            driverActivateView
             viewForState
                 .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
                 .onReceive(LocationManager.shared.$userLocation) { location in
@@ -66,17 +68,24 @@ extension HomeView{
     
     private var mainHomeButton: some View{
         VStack {
-            HStack{
+            HStack(alignment: .top){
                 if homeVM.mapState == .noInput{
-                    MainHomeActionButton(showSideMenu: $showSideMenu)
-                        .padding(.leading)
-                        .animation(nil, value: UUID().uuidString)
+                    DriverStatusButtonView(showDriverActivateSheet: $showDriverActivateSheet)
                     Spacer()
-                    ActiveToggle()
-                        .padding(.trailing)
+                    DriverAvatarActionButtonView(showSideMenu: $showSideMenu)
+                        .animation(nil, value: UUID().uuidString)
                 }
             }
+            .padding(.horizontal)
             focusCurrentLocationButton
+        }
+    }
+    private var driverActivateView: some View{
+        Group{
+            if showDriverActivateSheet{
+                DriverActiveSheetView(showDriverActivateSheet: $showDriverActivateSheet)
+                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
+            }
         }
     }
     
@@ -110,11 +119,6 @@ extension HomeView{
             AnyView(PickupPassengerView())
         case .tripInProgress:
             AnyView(TripInProgressView())
-        case .arrivedAtDestination:
-            AnyView(EmptyView())
-            //return AnyView(TripArrivalView(user: user))
-        case .locationSelected:
-            AnyView(EmptyView())
         default:
             AnyView(EmptyView())
         }

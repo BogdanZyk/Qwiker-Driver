@@ -74,10 +74,10 @@ extension HomeViewModel {
         tripService.addTripObserverForDriver { snapshot, error in
             guard let change = snapshot?.documentChanges.first else { return }
             guard let trip = try? change.document.data(as: RequestedTrip.self) else { return }
-            guard self.mapState != .tripRequested else { return }
             
             switch change.type {
             case .added, .modified:
+                guard self.mapState != .tripRequested else { return }
                 self.trip = trip
                 self.tripService.trip = trip
                 print("DEBUG", trip.tripState)
@@ -154,10 +154,11 @@ extension HomeViewModel {
     
     
     
-    func updateDriverActiveState(_ isActive: Bool) {
+    func updateDriverActiveState(_ isActive: Bool, completion: @escaping () -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         FbConstant.COLLECTION_DRIVERS.document(uid).updateData(["isActive": isActive]) { _ in
             self.user?.isActive = isActive
+            completion()
         }
     }
     

@@ -33,7 +33,7 @@ struct ActiveToggle: View {
         }
         .onChange(of: activeState) { newValue in
             if newValue != homeVM.user?.isActive{
-                homeVM.updateDriverActiveState(newValue)
+                homeVM.updateDriverActiveState(newValue){}
             }
         }
     }
