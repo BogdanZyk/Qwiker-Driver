@@ -156,6 +156,7 @@ extension MapViewRepresentable {
             if !didSetVisible{
                 MapHelpers.getDestinationRoute(from: userCoordinate, to: coordinate) { route in
                     print("DEBUG","add overlay")
+                    self.parent.homeViewModel.currentRoute = route
                     self.parent.mapView.removeOverlays(self.parent.mapView.overlays)
                     self.parent.mapView.addOverlay(route.polyline)
                     self.didSetVisibleMapForAccept = true
@@ -164,6 +165,7 @@ extension MapViewRepresentable {
             }else if newUserCoordinate != userCoordinate{
                 MapHelpers.getDestinationRoute(from: userCoordinate, to: coordinate) { route in
                     print("DEBUG","add overlay")
+                    self.parent.homeViewModel.currentRoute = route
                     self.parent.mapView.addOverlay(route.polyline)
                     if let overlay = self.parent.mapView.overlays.first{
                         self.parent.mapView.removeOverlay(overlay)

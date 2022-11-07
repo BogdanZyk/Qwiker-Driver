@@ -75,6 +75,9 @@
 		5A96270C29117B16002ADB48 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96270B29117B16002ADB48 /* HomeView.swift */; };
 		5A9627182911845A002ADB48 /* MapHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9627162911845A002ADB48 /* MapHelpers.swift */; };
 		5A9627192911845A002ADB48 /* HelpersFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9627172911845A002ADB48 /* HelpersFunc.swift */; };
+		5AA6B4942918F76C006D0D94 /* ExpandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4932918F76C006D0D94 /* ExpandView.swift */; };
+		5AA6B4982919009E006D0D94 /* CountDownTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4972919009E006D0D94 /* CountDownTimerView.swift */; };
+		5AA6B49A29190970006D0D94 /* CircleButtonWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B49929190970006D0D94 /* CircleButtonWithTitle.swift */; };
 		5ADC67352915162D0063014E /* TripInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC67342915162D0063014E /* TripInProgressView.swift */; };
 		5ADC673C291533400063014E /* TripCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC673B291533400063014E /* TripCompletedView.swift */; };
 		5ADC673E291534710063014E /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC673D291534710063014E /* Double.swift */; };
@@ -144,6 +147,9 @@
 		5A96270B29117B16002ADB48 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5A9627162911845A002ADB48 /* MapHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelpers.swift; sourceTree = "<group>"; };
 		5A9627172911845A002ADB48 /* HelpersFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpersFunc.swift; sourceTree = "<group>"; };
+		5AA6B4932918F76C006D0D94 /* ExpandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandView.swift; sourceTree = "<group>"; };
+		5AA6B4972919009E006D0D94 /* CountDownTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimerView.swift; sourceTree = "<group>"; };
+		5AA6B49929190970006D0D94 /* CircleButtonWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonWithTitle.swift; sourceTree = "<group>"; };
 		5ADC67342915162D0063014E /* TripInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInProgressView.swift; sourceTree = "<group>"; };
 		5ADC673B291533400063014E /* TripCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCompletedView.swift; sourceTree = "<group>"; };
 		5ADC673D291534710063014E /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -405,6 +411,9 @@
 				5A9626FB291149C7002ADB48 /* ImagePicker.swift */,
 				5A8DB58A29125A21004B640E /* bottomSheetView.swift */,
 				5A8DB5A229127E9F004B640E /* UserAvatarView.swift */,
+				5AA6B4932918F76C006D0D94 /* ExpandView.swift */,
+				5AA6B4972919009E006D0D94 /* CountDownTimerView.swift */,
+				5AA6B49929190970006D0D94 /* CircleButtonWithTitle.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -583,6 +592,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AA6B4982919009E006D0D94 /* CountDownTimerView.swift in Sources */,
 				5A8DB59C29127E24004B640E /* SideMenuView.swift in Sources */,
 				5A9626B929110E66002ADB48 /* AuthenticationViewModel.swift in Sources */,
 				5A9626AB29110BFE002ADB48 /* UIApplication.swift in Sources */,
@@ -623,11 +633,13 @@
 				5A8DB58E29125E8B004B640E /* AcceptTripView.swift in Sources */,
 				5A9626DA2911168E002ADB48 /* OnboardingView.swift in Sources */,
 				5A96269F29110B45002ADB48 /* LocationManager.swift in Sources */,
+				5AA6B49A29190970006D0D94 /* CircleButtonWithTitle.swift in Sources */,
 				5A962704291171CF002ADB48 /* HomeViewModel.swift in Sources */,
 				5A96268129110A35002ADB48 /* Qwiker_DriverApp.swift in Sources */,
 				5A9626F029112C40002ADB48 /* VerificationView.swift in Sources */,
 				5A9626EA2911223F002ADB48 /* FbConstants.swift in Sources */,
 				5A96270629117231002ADB48 /* MapViewState.swift in Sources */,
+				5AA6B4942918F76C006D0D94 /* ExpandView.swift in Sources */,
 				5A9626D629111185002ADB48 /* Passenger.swift in Sources */,
 				5A9626EE29112C1E002ADB48 /* LoginView.swift in Sources */,
 				5A9626E12911177A002ADB48 /* CustomLazyImage.swift in Sources */,

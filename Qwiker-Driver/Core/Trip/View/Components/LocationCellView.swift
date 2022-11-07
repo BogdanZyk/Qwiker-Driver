@@ -11,25 +11,19 @@ struct LocationCellView: View {
     let isDestination: Bool
     let title: String
     var body: some View {
-        HStack {
-            Group{
-               if isDestination{
-                    Circle()
-                        .fill(Color.primaryBlue)
-               }else{
-                   Rectangle()
-                       .fill(Color.black.opacity(0.8))
-               }
-            }
-            .frame(width: 10, height: 10)
+        HStack(spacing: 20) {
+            Circle()
+                .stroke(lineWidth: 3)
+                .fill(isDestination ? Color.primaryBlue : Color.secondaryGrey)
+                .frame(width: 12, height: 12)
             
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text(isDestination ? "Where to:" : "Where from:")
-                    .lineLimit(1)
+                    .foregroundColor(.gray)
                     .font(.poppinsMedium(size: 12))
                 Text(title)
                     .lineLimit(1)
-                    .font(.poppinsMedium(size: 18))
+                    .font(.headline.weight(.medium))
             }
         }
     }

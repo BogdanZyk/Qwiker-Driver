@@ -23,12 +23,13 @@ struct BottomSheetView <Content: View>: View{
     
     var body: some View {
         VStack(spacing: spacing) {
+            
             content
         }
         .padding()
         .padding(.bottom, 50)
         .hCenter()
-        .background(Color.white)
+        .background(Color.primaryBg)
         .clipShape(CustomCorners(corners: [.topLeft, .topRight], radius: 12))
         .frame(maxHeight: getRect().height / maxHeightForBounds)
         .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 0)

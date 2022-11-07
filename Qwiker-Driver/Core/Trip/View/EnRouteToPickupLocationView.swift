@@ -8,16 +8,38 @@
 import SwiftUI
 
 struct EnRouteToPickupLocationView: View {
+    @State private var expectedTravelTime: Date = Date()
     @State private var isActiveBtn: Bool = false
     @EnvironmentObject var homeVM: HomeViewModel
     var body: some View {
-        BottomSheetView(spacing: 15, maxHeightForBounds: 8) {
-            locationSection
+        
+        ZStack(alignment: .bottom) {
+            ExpandedView(minHeight: getRect().height / 6, maxHeight: getRect().height / 1.3) { minHeight, rect, offset in
+                
+                BottomSheetView(spacing: 15, maxHeightForBounds: 1) {
+                    dragIcon
+                    timerSection
+                    Group{
+                        Divider().padding(.horizontal, -16)
+                        locationSection
+                        CustomDivider(verticalPadding: 0, lineHeight: 10).padding(.horizontal, -16)
+                        paymentMethod
+                        Divider().padding(.horizontal, -16)
+                        actionButtons
+                    }
+                    .opacity(offset.wrappedValue > -10 ? 0 : 1)
+                    Spacer()
+                }
+            }
             pickUpButton
+                
         }
         .onReceive(LocationManager.shared.$didEnterPickupRegion, perform: { didEnterPickupRegion in
             isActiveBtn = didEnterPickupRegion
         })
+        .onAppear{
+            expectedTravelTime = Date() + (homeVM.currentRoute?.expectedTravelTime ?? 600)
+        }
     }
 }
 
@@ -33,25 +55,78 @@ struct EnRouteToPickupLocationView_Previews: PreviewProvider {
 
 
 extension EnRouteToPickupLocationView{
+    
+    @ViewBuilder
     private var locationSection: some View{
-        LocationCellView(isDestination: false, title: homeVM.trip?.pickupLocationAddress ?? "")
+        if let pickupLocationAddress = homeVM.trip?.pickupLocationAddress, let dropoffLocationName = homeVM.trip?.dropoffLocationName{
+            LocationRowsViewComponent(pickupLocationAddress: pickupLocationAddress, dropoffLocationName: dropoffLocationName)
+                .padding(.bottom, 10)
+        }
+    }
+    
+    private var pickUpButton: some View{
+
+        PrimaryButtonView(showLoader: false, title: "Arrived", font: .title3.bold()) {
+            homeVM.updateTripStateToArrived()
+        }.padding(.horizontal)
+        //            .opacity(isActiveBtn ? 1 : 0.5)
+        //            .disabled(!isActiveBtn)
+    }
+    
+    private var timerSection: some View{
+        HStack(spacing: 15) {
+            Image(systemName: "location.square.fill")
+                .imageScale(.large)
+                .foregroundColor(.gray)
+            VStack(alignment: .leading, spacing: 0){
+                CountDownTimerView(referenceDate: $expectedTravelTime)
+                Text("Time before pick-up")
+                    .font(.poppinsMedium(size: 14))
+                    .foregroundColor(.gray)
+                
+            }
+            Spacer()
+        }
+    }
+    private var dragIcon: some View{
+        Capsule()
+            .fill(Color.secondary.opacity(0.3))
+            .frame(width: 50, height: 6)
+            .padding(.top, 5)
+            .padding(.vertical, -15)
+    }
+
+
+    private var paymentMethod: some View{
+        Text("Non-cash payment")
+            .font(.poppinsMedium(size: 18))
             .hLeading()
     }
-    private var pickUpButton: some View{
-        HStack(spacing: 15) {
-            Button {
-                
-            } label: {
-                Image(systemName: "xmark.circle")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.red.opacity(0.5))
-            }
-            PrimaryButtonView(showLoader: false, title: "Arrived", font: .title3.bold()) {
-                homeVM.updateTripStateToArrived()
-            }
-//            .opacity(isActiveBtn ? 1 : 0.5)
-//            .disabled(!isActiveBtn)
+    
+    private var actionButtons: some View{
+        HStack{
+            Spacer()
+            CircleButtonWithTitle(title: "Call", imageName: "phone.fill", action: {})
+            Spacer()
+            CircleButtonWithTitle(title: "Cancel order", imageName: "xmark", action: {
+                //cancel trip
+            })
+            Spacer()
+            CircleButtonWithTitle(title: "Conflict", imageName: "bolt.shield", action: {})
+            Spacer()
         }
+        .padding(.top)
+    }
+
+}
+
+struct CustomDivider: View{
+    var verticalPadding: CGFloat = -10
+    var lineHeight: CGFloat = 6
+    var body: some View{
+        Rectangle()
+            .fill(Color.gray.opacity(0.1))
+            .frame(height: lineHeight)
+            .padding(.vertical, verticalPadding)
     }
 }

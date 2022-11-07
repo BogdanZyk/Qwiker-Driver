@@ -62,6 +62,7 @@ extension AcceptTripView{
             .font(.title3.bold())
             Divider().padding(.horizontal, -16)
         }
+        .withoutAnimation()
     }
     
     private var driverBonusSectionView: some View{

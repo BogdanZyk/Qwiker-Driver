@@ -25,8 +25,7 @@ final class HomeViewModel: ObservableObject{
     @Published var isShowCompleteTrip: Bool = false
     private var tripService = TripService()
     private var destinationLocation: AppLocation?
-    var routeToPassegers: MKRoute?
-    var roteToPicaupLocation: MKRoute?
+    var currentRoute: MKRoute?
     
     init(){
         fetchUser()
@@ -51,8 +50,7 @@ final class HomeViewModel: ObservableObject{
         self.mapState = .noInput
         trip = nil
         destinationLocation = nil
-        routeToPassegers = nil
-        roteToPicaupLocation = nil
+        currentRoute = nil
     }
 }
     
