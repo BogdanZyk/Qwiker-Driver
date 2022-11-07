@@ -19,6 +19,7 @@ struct HomeView: View {
                     .ignoresSafeArea()
                 mainHomeButton
             }
+            activateOrderButton
             sideMenuView
             driverActivateView
             viewForState
@@ -85,6 +86,15 @@ extension HomeView{
             if showDriverActivateSheet{
                 DriverActiveSheetView(showDriverActivateSheet: $showDriverActivateSheet)
                     .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
+            }
+        }
+    }
+    
+    private var activateOrderButton: some View{
+        Group {
+            if let driver = homeVM.user, !(driver.isActive){
+                DriverActivateButtonView()
+                    .padding(.bottom, 20)
             }
         }
     }

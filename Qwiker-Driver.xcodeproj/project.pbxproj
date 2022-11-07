@@ -82,6 +82,7 @@
 		5AA6B4A029193132006D0D94 /* DriverAvatarActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B49F29193132006D0D94 /* DriverAvatarActionButtonView.swift */; };
 		5AA6B4A3291933CE006D0D94 /* DriverStatusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4A2291933CE006D0D94 /* DriverStatusButtonView.swift */; };
 		5AA6B4A529193927006D0D94 /* DriverActiveSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4A429193927006D0D94 /* DriverActiveSheetView.swift */; };
+		5AA6B4A729194270006D0D94 /* DriverActivateButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA6B4A629194270006D0D94 /* DriverActivateButtonView.swift */; };
 		5ADC67352915162D0063014E /* TripInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC67342915162D0063014E /* TripInProgressView.swift */; };
 		5ADC673C291533400063014E /* TripCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC673B291533400063014E /* TripCompletedView.swift */; };
 		5ADC673E291534710063014E /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC673D291534710063014E /* Double.swift */; };
@@ -158,6 +159,7 @@
 		5AA6B49F29193132006D0D94 /* DriverAvatarActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAvatarActionButtonView.swift; sourceTree = "<group>"; };
 		5AA6B4A2291933CE006D0D94 /* DriverStatusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverStatusButtonView.swift; sourceTree = "<group>"; };
 		5AA6B4A429193927006D0D94 /* DriverActiveSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverActiveSheetView.swift; sourceTree = "<group>"; };
+		5AA6B4A629194270006D0D94 /* DriverActivateButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverActivateButtonView.swift; sourceTree = "<group>"; };
 		5ADC67342915162D0063014E /* TripInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInProgressView.swift; sourceTree = "<group>"; };
 		5ADC673B291533400063014E /* TripCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCompletedView.swift; sourceTree = "<group>"; };
 		5ADC673D291534710063014E /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				5AA6B49F29193132006D0D94 /* DriverAvatarActionButtonView.swift */,
 				5A8DB5AB29128678004B640E /* ActiveToggleView.swift */,
 				5AA6B4A2291933CE006D0D94 /* DriverStatusButtonView.swift */,
+				5AA6B4A629194270006D0D94 /* DriverActivateButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 				5AA6B4982919009E006D0D94 /* CountDownTimerView.swift in Sources */,
 				5A8DB59C29127E24004B640E /* SideMenuView.swift in Sources */,
 				5A9626B929110E66002ADB48 /* AuthenticationViewModel.swift in Sources */,
+				5AA6B4A729194270006D0D94 /* DriverActivateButtonView.swift in Sources */,
 				5A9626AB29110BFE002ADB48 /* UIApplication.swift in Sources */,
 				5A9626EC29112278002ADB48 /* UserService.swift in Sources */,
 				5A8DB58B29125A21004B640E /* bottomSheetView.swift in Sources */,
