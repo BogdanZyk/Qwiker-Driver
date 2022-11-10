@@ -31,13 +31,13 @@ enum SideMenuOptionViewType: Int, CaseIterable {
     
     var imageName: String {
         switch self {
-        case .trips: return "list.bullet.rectangle"
-        case .wallet: return "creditcard"
-        case .support: return "bubble.left"
-        case .promocodes: return ""
-        case .share: return ""
-        case .photocontrol: return ""
-        case .message: return ""
+        case .trips: return "list.bullet.circle.fill"
+        case .wallet: return "creditcard.circle.fill"
+        case .support: return "questionmark.circle.fill"
+        case .promocodes: return "bookmark.circle.fill"
+        case .share: return "arrowshape.turn.up.forward.circle.fill"
+        case .photocontrol: return "camera.circle.fill"
+        case .message: return "bubble.right.circle.fill"
         }
     }
 }

@@ -22,6 +22,7 @@ struct SideMenuView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 driverRetingSectionView
                 daylyTotalView
+                CustomDivider(verticalPadding: 0, lineHeight: 10).padding(.horizontal, -16)
                 listOptionsView
                 .background(
                     GeometryReader { geometryProxy -> Color in
