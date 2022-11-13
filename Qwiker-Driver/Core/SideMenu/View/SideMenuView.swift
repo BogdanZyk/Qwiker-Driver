@@ -13,6 +13,7 @@ struct SideMenuView: View {
     @Environment(\.dismiss) var dismiss
     @State private var largeHeader: Bool = true
     @State private var showDriverRegistrationView = false
+    @EnvironmentObject var orderVM: OrderViewModel
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var homeVM: HomeViewModel
     @State private var navigationTipe: SideMenuOptionViewType?
@@ -46,6 +47,7 @@ struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             SideMenuView()
+                .environmentObject(OrderViewModel())
                 .environmentObject(dev.homeViewModel)
                 .environmentObject(AuthenticationViewModel())
         }
@@ -68,7 +70,7 @@ extension SideMenuView{
                 VStack(spacing: 5) {
                     UserAvatarViewComponent(pathImage: homeVM.user?.profileImageUrl, size: .init(width: largeHeader ? 70 : 50, height: largeHeader ? 70 : 50))
                     if largeHeader{
-                        Text("user name")
+                        Text(homeVM.user?.fullname ?? "")
                             .font(.poppinsMedium(size: 18))
                             .transition(.opacity)
                     }
@@ -123,7 +125,7 @@ extension SideMenuView{
         VStack(spacing: 10) {
             Text("Today \(Date().formatted(date: .abbreviated, time: .omitted))")
                 .font(.poppinsMedium(size: 20))
-            Text("0.0$")
+            Text(orderVM.totalCoast.toCurrency())
                 .font(.title.bold())
         }
     }
@@ -133,21 +135,22 @@ extension SideMenuView{
 // MARK: List side menu section
 extension SideMenuView{
     private var listOptionsView: some View{
-        VStack(alignment: .leading){
+        VStack(alignment: .leading, spacing: 5){
             ForEach(SideMenuOptionViewType.allCases, id: \.self) { option in
                 Button {
                     navigationTipe = option
                 } label: {
                     SideMenuOptionView(optionType: option)
                 }
+                Divider()
             }
-            Button {
+            
+            PrimaryButtonView(title: "Log out", bgColor: .secondaryGrey.opacity(0.3), fontColor: .secondaryGrey) {
                 authViewModel.signOut()
-            } label: {
-                Text("Log out")
-                    .font(.title3.bold())
             }
+            .padding(.vertical, 20)
         }
+        .padding(.horizontal)
         
     }
     private var navigationLinks: some View{

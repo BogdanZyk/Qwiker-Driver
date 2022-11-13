@@ -57,6 +57,7 @@ extension HomeView{
                     Spacer()
                     NavigationLink {
                         SideMenuView()
+                            .environmentObject(orderVM)
                             .environmentObject(homeVM)
                     } label: {
                         DriverAvatarActionButtonView()

@@ -21,6 +21,7 @@ struct SideMenuOptionView: View {
                 .font(.poppinsMedium(size: 18))
             
             Spacer()
+            Image(systemName: "chevron.right")
         }
         .foregroundColor(.black)
         .padding(.vertical)
